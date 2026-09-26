@@ -15,7 +15,7 @@ export default function Header() {
     { href: "/", label: t.nav.home },
     { href: "/portfolio", label: t.nav.work },
     { href: "/about", label: t.nav.about },
-    { href: "/contact", label: t.nav.contact },
+    // { href: "/contact", label: t.nav.contact },
   ];
 
   useEffect(() => {
