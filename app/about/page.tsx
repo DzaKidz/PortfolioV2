@@ -6,20 +6,36 @@ import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
 import Parallax from "@/components/Parallax";
 
+// const TOOLS = [
+//   { icon: "🎨", name: "Illustrator" },
+//   { icon: "🖼️", name: "Photoshop" },
+//   { icon: "🎬", name: "After Effects" },
+//   { icon: "🎞️", name: "Premiere Pro" },
+//   { icon: "🌈", name: "DaVinci Resolve" },
+//   { icon: "🧊", name: "Blender 3D" },
+//   { icon: "📐", name: "Figma" },
+//   { icon: "🌐", name: "HTML5 / CSS3" },
+//   { icon: "🟨", name: "JavaScript" },
+//   { icon: "⚛️", name: "React" },
+//   { icon: "⚡", name: "Tailwind CSS" },
+//   { icon: "🔀", name: "Git" },
+// ];
+
 const TOOLS = [
-  { icon: "🎨", name: "Illustrator" },
-  { icon: "🖼️", name: "Photoshop" },
-  { icon: "🎬", name: "After Effects" },
-  { icon: "🎞️", name: "Premiere Pro" },
-  { icon: "🌈", name: "DaVinci Resolve" },
-  { icon: "🧊", name: "Blender 3D" },
-  { icon: "📐", name: "Figma" },
-  { icon: "🌐", name: "HTML5 / CSS3" },
-  { icon: "🟨", name: "JavaScript" },
-  { icon: "⚛️", name: "React" },
-  { icon: "⚡", name: "Tailwind CSS" },
-  { icon: "🔀", name: "Git" },
+  { icon: "", name: "Illustrator" },
+  { icon: "", name: "Photoshop" },
+  { icon: "", name: "After Effects" },
+  { icon: "", name: "Premiere Pro" },
+  { icon: "", name: "DaVinci Resolve" },
+  { icon: "", name: "Blender 3D" },
+  { icon: "", name: "Figma" },
+  { icon: "", name: "HTML5 / CSS3" },
+  { icon: "", name: "JavaScript" },
+  { icon: "", name: "React" },
+  { icon: "", name: "Tailwind CSS" },
+  { icon: "", name: "Git" },
 ];
+
 
 const SOFT_CLS = [
   "badge-accent",
