@@ -9,12 +9,12 @@ import Parallax from "@/components/Parallax";
 import Tilt from "@/components/Tilt";
 import Boop from "@/components/Boop";
 import SkySun from "@/components/SkySun";
-import PlanetSecret from "@/components/PlanetSecret";
 import {
   Balloon,
   Bird,
   Cloud,
   PaperPlane,
+  Planet,
   Sparkle,
   StarField,
 } from "@/components/Doodles";
@@ -37,7 +37,7 @@ function useRotatingWord() {
 const PLAY_STYLE = [
   { glyph: "Aa", tone: "" },
   { glyph: "▦", tone: "sand" },
-  { glyph: "â—", tone: "accent" },
+  { glyph: "◐", tone: "accent" },
   { glyph: "✳", tone: "ink" },
 ];
 
@@ -100,7 +100,13 @@ export default function Home() {
               </span>
             </Boop>
           </Parallax>
-          <PlanetSecret />
+          <Parallax speed={-0.04} className={styles.skyPlanet}>
+            <Boop style={{ width: "100%" }} label="Planet — klik untuk animasi">
+              <span className={`${styles.skyFloat} ${styles.sf4}`}>
+                <Planet style={{ width: "100%", height: "auto" }} />
+              </span>
+            </Boop>
+          </Parallax>
 
           <div className={styles.skyHillsBack} aria-hidden="true">
             <svg viewBox="0 0 1440 120" preserveAspectRatio="none">

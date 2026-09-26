@@ -8,16 +8,16 @@ import Parallax from "@/components/Parallax";
 import Tilt from "@/components/Tilt";
 
 const TOOLS = [
-  { icon: "🍨", name: "Illustrator" },
-  { icon: "🖼ï¸", name: "Photoshop" },
-  { icon: "🍬", name: "After Effects" },
-  { icon: "🍞ï¸", name: "Premiere Pro" },
-  { icon: "🋇", name: "DaVinci Resolve" },
-  { icon: "🧉", name: "Blender 3D" },
-  { icon: "ðŸ“", name: "Figma" },
-  { icon: "ðŸŒ", name: "HTML5 / CSS3" },
+  { icon: "🎨", name: "Illustrator" },
+  { icon: "🖼️", name: "Photoshop" },
+  { icon: "🎬", name: "After Effects" },
+  { icon: "🎞️", name: "Premiere Pro" },
+  { icon: "🌈", name: "DaVinci Resolve" },
+  { icon: "🧊", name: "Blender 3D" },
+  { icon: "📐", name: "Figma" },
+  { icon: "🌐", name: "HTML5 / CSS3" },
   { icon: "🟨", name: "JavaScript" },
-  { icon: "⚛ï¸", name: "React" },
+  { icon: "⚛️", name: "React" },
   { icon: "⚡", name: "Tailwind CSS" },
   { icon: "🔀", name: "Git" },
 ];

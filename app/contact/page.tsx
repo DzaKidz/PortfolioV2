@@ -127,7 +127,7 @@ export default function ContactPage() {
                     className="quick-contact-icon quick-contact-icon--tg"
                     aria-hidden="true"
                   >
-                    ✇ï¸
+                    ✈️
                   </span>
                   <span className="info">
                     <span className="label">Telegram</span>

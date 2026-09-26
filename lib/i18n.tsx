@@ -144,18 +144,6 @@ export interface Dict {
     nav: string;
     social: string;
   };
-  game: {
-    title: string;
-    hint: string;
-    howto: string;
-    moves: string;
-    best: string;
-    time: string;
-    start: string;
-    again: string;
-    close: string;
-    solved: string;
-  };
 }
 
 const id: Dict = {
@@ -403,18 +391,6 @@ const id: Dict = {
     nav: "Navigasi",
     social: "Sosial Media",
   },
-  game: {
-    title: "Susun Ulang",
-    hint: "Easter egg — planet di langit bisa diklik 3 kali.",
-    howto: "Geser potongan foto sampai kembali utuh. Klik ubin yang bersebelahan dengan kotak kosong.",
-    moves: "Langkah",
-    best: "Rekor",
-    time: "Waktu",
-    start: "Acak",
-    again: "Main lagi",
-    close: "Tutup",
-    solved: "Foto tersusun!",
-  },
 };
 
 const en: Dict = {
@@ -655,18 +631,6 @@ const en: Dict = {
     desc: "Graphic Designer, Motion Designer & Video Editor also exploring modern Frontend Web interfaces.",
     nav: "Navigation",
     social: "Social Media",
-  },
-  game: {
-    title: "Slide It Back",
-    hint: "Easter egg — the planet in the sky takes 3 clicks.",
-    howto: "Slide the photo tiles until the picture is whole. Click a tile next to the empty slot.",
-    moves: "Moves",
-    best: "Best",
-    time: "Time",
-    start: "Shuffle",
-    again: "Play again",
-    close: "Close",
-    solved: "Picture solved!",
   },
 };
 

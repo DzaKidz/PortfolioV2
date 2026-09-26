@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Atmosphere from "@/components/Atmosphere";
-import FlyBy from "@/components/FlyBy";
 import { LanguageProvider } from "@/lib/i18n";
 
 // DESIGN.md [detected] type tokens — self-hosted via next/font, no
@@ -80,7 +79,6 @@ export default function RootLayout({
           {children}
           <Footer />
           <Atmosphere />
-          <FlyBy />
         </LanguageProvider>
       </body>
     </html>

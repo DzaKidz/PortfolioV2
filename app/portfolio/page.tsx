@@ -288,7 +288,7 @@ export default function PortfolioPage() {
                     {isEn ? active.categoryLabelEn : active.categoryLabel}
                   </span>
                   <span className="badge badge-muted">{active.year}</span>
-                  <span className="badge badge-muted">📋 {active.role}</span>
+                  <span className="badge badge-muted">📌 {active.role}</span>
                 </div>
                 <h2 className="modal-title" id="modal-title">
                   {active.title}
