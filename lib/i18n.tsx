@@ -276,7 +276,7 @@ const id: Dict = {
     titleA: "Kenali",
     desc: "Visual creator yang berfokus pada Desain Grafis, Motion Graphics, Video Editing, serta implementasi Frontend Web.",
     profile: "Profil Profesional",
-    profileTitle: "Halo, saya Ahmad Dzaky 👋",
+    profileTitle: "Halo, saya Ahmad Dzaky",
     bio: [
       "Saya adalah seorang Graphic Designer, Motion Designer, dan Video Editor dengan antusiasme mendalam pada penceritaan visual dan komunikasi kreatif. Untuk sisi teknis, saya berfokus pada pengembangan Frontend Web untuk menyajikan visual dan interaksi secara nyata di peramban.",
       "Bagi saya, perpaduan antara desain visual yang kuat, animasi gerak yang ritmis, dan editing video yang berjiwa adalah kunci untuk menciptakan kesan yang mendalam bagi audiens. Kemampuan frontend membantu saya menjembatani visi desain grafis menjadi prototipe web yang responsif dan interaktif.",
@@ -408,7 +408,7 @@ const en: Dict = {
     titleA: "Visuals",
     titleB: "pulse",
     skySub: "Folio © 2026 · Jakarta, ID · Design · Motion · Code",
-    hint: "Psst — the sun is draggable ✦",
+    hint: "Psst — the sun is draggable",
     rotating: [
       "brand identities",
       "motion systems",
@@ -517,7 +517,7 @@ const en: Dict = {
     titleA: "Meet",
     desc: "A visual creator focused on Graphic Design, Motion Graphics, Video Editing and Frontend Web implementation.",
     profile: "Professional Profile",
-    profileTitle: "Hi, I'm Ahmad Dzaky 👋",
+    profileTitle: "Hi, I'm Ahmad Dzaky",
     bio: [
       "I'm a Graphic Designer, Motion Designer and Video Editor with a deep enthusiasm for visual storytelling and creative communication. On the technical side, I focus on Frontend Web development to present visuals and interactions live in the browser.",
       "To me, the blend of strong visual design, rhythmic motion and soulful video editing is the key to leaving a lasting impression. Frontend skills help me bridge graphic design vision into responsive, interactive web prototypes.",

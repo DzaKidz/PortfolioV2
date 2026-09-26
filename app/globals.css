@@ -2314,7 +2314,7 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
   }
 
   .about-avatar-wrap {
-    max-width: 320px;
+    max-width: 3z0px;
     margin: 0 auto;
     aspect-ratio: 1/1;
   }
@@ -2553,7 +2553,7 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
 
 .pagehero-doodle {
   position: absolute;
-  top: var(--space-20);
+  top: var(--space-25);
   z-index: 0;
   opacity: 0.9;
   pointer-events: none;

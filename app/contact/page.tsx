@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
+import Tilt from "@/components/Tilt";
 
 interface Errors {
   name?: string;
@@ -153,7 +154,7 @@ export default function ContactPage() {
               <h3 className="section-label mb-4">{t.contact.findMe}</h3>
               <div className="social-links">
                 <a
-                  href="https://github.com/princedzaky"
+                  href="https://github.com/DzaKidz"
                   className="social-link"
                   target="_blank"
                   rel="noopener"

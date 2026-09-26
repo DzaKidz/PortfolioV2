@@ -41,11 +41,6 @@ export default function Footer() {
                   {t.nav.about}
                 </Link>
               </li>
-              <li>
-                <Link href="/contact" className="footer-link">
-                  {t.nav.contact}
-                </Link>
-              </li>
             </ul>
           </div>
           <div>
@@ -137,7 +132,7 @@ export default function Footer() {
           </div>
           <div className="footer-social">
             <a
-              href="https://github.com/ahmadzaky"
+              href="https://github.com/DzaKidz"
               className="social-link"
               target="_blank"
               rel="noopener"
