@@ -1,0 +1,1287 @@
+/* Editorial homepage — original implementation guided by DESIGN.md
+   detected tokens (paper #FFF9F1, sand #EEE8D2, accent #F4CD44,
+   serif display + mono kickers, 18px radii, pill buttons).
+   No reference-site assets, copy, or layouts reproduced. */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--nav-height) + var(--space-12)) 0 var(--space-16);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -140px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: var(--clr-accent-2);
+  opacity: 0.35;
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.heroGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25fr 0.9fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.kicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-text);
+  margin-bottom: var(--space-6);
+}
+
+.kickerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-text);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--clr-text);
+  margin-bottom: var(--space-6);
+}
+
+.titleEm {
+  font-style: italic;
+  background: linear-gradient(
+    transparent 60%,
+    var(--clr-accent-2) 60%,
+    var(--clr-accent-2) 96%,
+    transparent 96%
+  );
+  padding: 0 0.06em;
+}
+
+.roleLine {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-4);
+  min-height: 1.6em;
+}
+
+.roleWord {
+  color: var(--clr-text);
+  border-bottom: 2px solid var(--clr-accent-2);
+}
+
+.lede {
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--clr-text-muted);
+  max-width: 34rem;
+  margin-bottom: var(--space-8);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+}
+
+.avail {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--clr-text);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.availDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #15803D;
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.2);
+}
+
+.portraitCard {
+  position: relative;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transform: rotate(2deg);
+  transition: transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* Kilau kaca menyapu saat kartu dimiringkan (3D oleh Tilt) */
+.portraitCard::after {
+  content: "";
+  position: absolute;
+  inset: -30% -60%;
+  background: linear-gradient(
+    112deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.55) 48%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent 64%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-out), transform 0.6s var(--ease-out);
+  transform: translateX(-38%);
+}
+
+:global(.tilt):hover .portraitCard {
+  box-shadow: 0 34px 60px -26px rgba(12, 26, 42, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.16);
+}
+
+:global(.tilt):hover .portraitCard::after {
+  opacity: 1;
+  transform: translateX(24%);
+}
+
+.portraitCard:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.portraitCard img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.portraitCap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  border-top: 1px solid var(--clr-border);
+}
+
+.sticker {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000;
+  background: var(--clr-accent-2);
+  border: 1px solid #000;
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  transform: rotate(6deg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Accent marquee strip */
+.marquee {
+  background: var(--clr-accent-2);
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+  padding: var(--space-3) 0;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: var(--space-8);
+  width: max-content;
+  animation: zk-marquee 22s linear infinite;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #000;
+  white-space: nowrap;
+}
+
+@keyframes zk-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Section scaffolding */
+.block {
+  padding: var(--space-24) 0;
+}
+
+.headRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+  flex-wrap: wrap;
+}
+
+.headTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--clr-text);
+}
+
+.headNote {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+  max-width: 22rem;
+  line-height: 1.7;
+}
+
+/* Selected work */
+.workGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.workCard {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.workCard:hover {
+  transform: translateY(-6px);
+  border-color: var(--clr-text);
+  box-shadow: var(--shadow-md);
+}
+
+.workGrid > :nth-child(2) .workCard {
+  transform: translateY(var(--space-8));
+}
+
+.thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--clr-surface-2);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.thumb img,
+.thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.workCard:hover .thumb img,
+.workCard:hover .thumb video {
+  transform: scale(1.05);
+}
+
+.workBody {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.workMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+.workTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: var(--clr-text);
+}
+
+.workDesc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--clr-text-muted);
+  flex: 1;
+}
+
+.workLink {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--clr-text);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.workLink:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--clr-accent-2);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+
+/* Triptych — designer-who-codes posture, original copy */
+.triGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.triGrid .tilt,
+.triGrid .tilt .triCard {
+  height: 100%;
+}
+
+.triCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  background: var(--clr-surface);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur-base) var(--ease-out),
+    background var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.triCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--clr-accent-2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease-out);
+}
+
+.triGrid .triCard:hover,
+.triGrid .triCard:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--clr-text);
+  background: var(--clr-glass-hover);
+}
+
+.triGrid .triCard:hover::after,
+.triGrid .triCard:focus-within::after {
+  transform: scaleX(1);
+}
+
+/* Kartu hitam harus tetap kontras saat hover (teks krem di atas gelap) */
+.triGrid .triCard.triCardAccent:hover,
+.triGrid .triCard.triCardAccent:focus-within {
+  background: #000;
+  color: #FFF9F1;
+  border-color: #000;
+}
+
+.triGrid .triCard.triCardAccent:hover .triText,
+.triGrid .triCard.triCardAccent:focus-within .triText {
+  opacity: 0.86;
+}
+
+.triCardAccent {
+  background: #000;
+  color: #FFF9F1;
+  border-color: #000;
+}
+
+.triCardAccent:hover {
+  background: #000;
+}
+
+.triIndex {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.triIndex::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.3;
+}
+
+.triTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.9vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin-bottom: var(--space-4);
+  min-height: calc(1.08 * 2 * clamp(1.5rem, 1.9vw, 2rem));
+}
+
+.triCardAccent .triTitle {
+  color: #FFF9F1;
+}
+
+.triText {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  opacity: 0.8;
+  margin-top: auto;
+}
+
+/* Playground */
+.playGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.playTile {
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  background: var(--clr-surface);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.playTile:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+}
+
+.playTileSand {
+  background: var(--clr-surface-2);
+}
+
+.playTileAccent {
+  background: var(--clr-accent-2);
+}
+
+.playTileInk {
+  background: #000;
+  color: #FFF9F1;
+  border-color: #000;
+}
+
+.playTileInk .playDesc {
+  color: rgba(255, 249, 241, 0.75);
+}
+
+.playGlyph {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: auto;
+}
+
+.playIndex {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+}
+
+.playTitle {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.playDesc {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--clr-text-muted);
+}
+
+/* About band */
+.band {
+  background: var(--clr-surface);
+  border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.bandGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.bandTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  line-height: 1.08;
+  color: var(--clr-text);
+  margin-bottom: var(--space-6);
+}
+
+.bandText {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.statRow {
+  display: flex;
+  gap: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.statNum {
+  font-family: var(--font-serif);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--clr-text);
+  display: block;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+/* CTA panel */
+.ctaPanel {
+  background: #000;
+  color: #FFF9F1;
+  border-radius: var(--radius-xl);
+  padding: clamp(var(--space-8), 6vw, var(--space-20));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaStarA {
+  position: absolute;
+  top: 16%;
+  right: 9%;
+  color: var(--clr-accent-2);
+}
+
+.ctaStarB {
+  position: absolute;
+  bottom: 18%;
+  left: 7%;
+  color: rgba(255, 249, 241, 0.5);
+}
+
+.ctaPanel::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--clr-accent-2);
+  opacity: 0.9;
+  top: -150px;
+  left: -100px;
+  pointer-events: none;
+}
+
+.ctaPanel::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 249, 241, 0.3);
+  bottom: -90px;
+  right: 8%;
+  pointer-events: none;
+}
+
+.ctaKicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clr-accent-2);
+  display: block;
+  margin-bottom: var(--space-4);
+  position: relative;
+}
+
+.ctaTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 1.02;
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.ctaTitle em {
+  font-style: italic;
+  color: var(--clr-accent-2);
+}
+
+.ctaText {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: rgba(255, 249, 241, 0.75);
+  max-width: 32rem;
+  margin: 0 auto var(--space-8);
+  line-height: 1.75;
+  position: relative;
+}
+
+.ctaRow {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 249, 241, 0.4);
+  color: #FFF9F1;
+  letter-spacing: 0.05em;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.ctaGhost:hover {
+  border-color: #FFF9F1;
+  background: rgba(255, 249, 241, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .workGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .workGrid > :nth-child(2) .workCard {
+    transform: none;
+  }
+
+  .playGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .triGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .triTitle {
+    min-height: 0;
+  }
+
+  .bandGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .workGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .playGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .block {
+    padding: var(--space-16) 0;
+  }
+
+  .skyTitle {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
+  .deckBar {
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  .bioGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   SKY HERO + DECK BAR + FLIGHT PATH
+   (postur terinspirasi referensi, komposisi & aset orisinal)
+   ============================================================ */
+.skyWrap {
+  padding: calc(var(--nav-height) + var(--space-4)) var(--space-4) 0;
+}
+
+.sky {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background:
+    radial-gradient(
+      900px 500px at 93% 11%,
+      rgba(255, 238, 175, 0.62),
+      rgba(255, 238, 175, 0) 62%
+    ),
+    radial-gradient(
+      1200px 700px at 12% 105%,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(180deg, #3E8BD2 0%, #7FBCEB 52%, #CDE6FA 100%);
+  transition: background 0.8s ease;
+  padding: clamp(var(--space-12), 9vw, var(--space-24)) var(--space-6)
+    clamp(var(--space-16), 10vw, 7rem);
+  text-align: center;
+}
+
+[data-theme="dark"] .sky {
+  background:
+    radial-gradient(
+      700px 440px at 93% 11%,
+      rgba(255, 246, 222, 0.2),
+      rgba(255, 246, 222, 0) 62%
+    ),
+    radial-gradient(
+      1000px 620px at 50% 112%,
+      rgba(96, 116, 205, 0.28),
+      rgba(96, 116, 205, 0) 60%
+    ),
+    linear-gradient(180deg, #070B22 0%, #11173A 55%, #232A55 100%);
+  border-color: rgba(255, 249, 241, 0.16);
+}
+
+/* Film grain glossy + kilau diagonal di atas langit */
+.skyGrain,
+.skySheen {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.skyGrain {
+  opacity: 0.32;
+  mix-blend-mode: overlay;
+  background-size: 160px 160px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.skySheen {
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.2) 48%,
+    rgba(255, 255, 255, 0.05) 53%,
+    transparent 59%
+  );
+}
+
+/* Siluet bukit berlapis di kaki langit (statis = latar jauh) */
+.skyHills,
+.skyHillsBack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 1;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.skyHills svg,
+.skyHillsBack svg {
+  display: block;
+  width: 108%;
+  height: 90px;
+  margin-left: -4%;
+  animation: hills-drift 14s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.skyHillsBack {
+  opacity: 0.6;
+  bottom: 34px;
+}
+
+.skyHillsBack svg {
+  height: 120px;
+  animation-duration: 19s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes hills-drift {
+  from {
+    transform: translateX(-1.6%);
+  }
+  to {
+    transform: translateX(1.6%);
+  }
+}
+
+[data-theme="dark"] .skyHills,
+[data-theme="dark"] .skyHillsBack {
+  filter: brightness(0.32) saturate(1.3);
+}
+
+/* Matahari/bulan: halo menempel persis di objek (ikut digeser & ganti tema) */
+.skySun::before {
+  content: "";
+  position: absolute;
+  inset: -52%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 214, 92, 0.6) 0%,
+    rgba(255, 214, 92, 0.22) 38%,
+    rgba(255, 214, 92, 0) 70%
+  );
+  filter: blur(14px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .skySun::before {
+  background: radial-gradient(
+    circle,
+    rgba(214, 228, 255, 0.42) 0%,
+    rgba(214, 228, 255, 0.14) 40%,
+    rgba(214, 228, 255, 0) 70%
+  );
+}
+
+.skySun :global(.doodle-float) {
+  filter: drop-shadow(0 0 16px rgba(255, 196, 64, 0.55))
+    drop-shadow(0 4px 14px rgba(12, 26, 42, 0.22));
+}
+
+[data-theme="dark"] .skySun :global(.doodle-float) {
+  filter: drop-shadow(0 0 16px rgba(190, 210, 255, 0.45))
+    drop-shadow(0 4px 14px rgba(0, 0, 0, 0.35));
+}
+
+.skyCloudB {
+  filter: blur(1.5px);
+}
+
+.skyInner {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.skyKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #000;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+[data-theme="dark"] .skyKicker {
+  color: #FFF9F1;
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 249, 241, 0.3);
+}
+
+.skyTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: #FFFDF8;
+  text-shadow:
+    0 3px 0 rgba(12, 26, 42, 0.28),
+    0 14px 36px rgba(12, 26, 42, 0.3);
+  margin-bottom: var(--space-6);
+}
+
+.skyTitle em {
+  font-style: italic;
+}
+
+.skySub {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #0c1a2a;
+  background: rgba(255, 255, 255, 0.7);
+  display: inline-block;
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+}
+
+[data-theme="dark"] .skySub {
+  color: #FFF9F1;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.skySun {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-8);
+  width: clamp(64px, 9vw, 110px);
+  z-index: 1;
+}
+
+.skyCloud {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.95;
+}
+
+.skyCloudA {
+  top: 18%;
+  left: 4%;
+  width: clamp(110px, 16vw, 190px);
+}
+
+.skyCloudB {
+  top: 8%;
+  left: 30%;
+  width: clamp(80px, 11vw, 130px);
+  opacity: 0.8;
+}
+
+.skyCloudC {
+  bottom: 24%;
+  right: 6%;
+  width: clamp(120px, 17vw, 200px);
+}
+
+.skyBirds {
+  position: absolute;
+  z-index: 1;
+  color: #0c1a2a;
+  opacity: 0.75;
+}
+
+.skyBirdsA {
+  top: 30%;
+  right: 22%;
+  width: 56px;
+}
+
+.skyBirdsB {
+  top: 14%;
+  left: 16%;
+  width: 40px;
+  opacity: 0.5;
+}
+
+/* Animasi mengambang tiap elemen langit — ritme berbeda agar hidup */
+.skyFloat {
+  display: block;
+  animation: sky-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sf1 {
+  animation-duration: 7s;
+}
+
+.sf2 {
+  animation-duration: 9.5s;
+  animation-delay: -3s;
+}
+
+.sf3 {
+  animation-duration: 11s;
+  animation-delay: -5.5s;
+}
+
+.sf4 {
+  animation-duration: 8s;
+  animation-delay: -2s;
+}
+
+.sf5 {
+  animation-duration: 12s;
+  animation-delay: -4s;
+}
+
+@keyframes sky-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(1.6vw, -16px) rotate(1.2deg);
+  }
+  66% {
+    transform: translate(0.7vw, -6px) rotate(-0.8deg);
+  }
+}
+
+/* Lapisan malam: bintang + planet (hanya tampil di tema malam) */
+.skyStars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  pointer-events: none;
+}
+
+.skyStars svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 1.5px rgba(255, 253, 248, 0.95))
+    drop-shadow(0 0 5px rgba(168, 205, 255, 0.7))
+    drop-shadow(0 0 12px rgba(140, 185, 255, 0.4));
+}
+
+[data-theme="dark"] .skyStars {
+  opacity: 1;
+}
+
+.skyPlanet {
+  position: absolute;
+  z-index: 1;
+  bottom: 16%;
+  left: 7%;
+  width: clamp(90px, 12vw, 150px);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .skyPlanet {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.skyBalloon {
+  position: absolute;
+  z-index: 1;
+  bottom: 30%;
+  left: 10%;
+  width: clamp(52px, 7vw, 84px);
+}
+
+.skyHint {
+  margin-top: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #0c1a2a;
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .skyHint {
+  color: #FFF9F1;
+}
+
+[data-theme="dark"] .skyBirds {
+  color: #FFF9F1;
+}
+
+/* Deck bar — pill konsol yang overlap tepi langit */
+.deckWrap {
+  position: relative;
+  z-index: 3;
+  max-width: 760px;
+  margin: calc(var(--space-8) * -1) auto 0;
+  padding: 0 var(--space-4);
+}
+
+/* Lembaran konten yang meluncur menutupi langit statis */
+.skyCover {
+  position: relative;
+  z-index: 1;
+  background: var(--clr-bg);
+  border-radius: 28px 28px 0 0;
+  margin-top: var(--space-12);
+  box-shadow: 0 -18px 44px rgba(12, 26, 42, 0.14);
+}
+
+.deckBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: linear-gradient(180deg, #FFFDF8 0%, #F8EFDB 100%);
+  border: 1.5px solid #000;
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .deckBar {
+  background: #211B16;
+  border-color: #FFF9F1;
+}
+
+.deckAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #000;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .deckAvatar {
+  border-color: #FFF9F1;
+}
+
+.deckText {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deckText strong {
+  color: var(--clr-text);
+}
+
+.deckCta {
+  flex-shrink: 0;
+}
+
+/* Bio + flight path */
+.bioSection {
+  padding: var(--space-16) 0 var(--space-8);
+}
+
+.bioGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.bioCopy {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--clr-text-muted);
+  max-width: 36rem;
+}
+
+.bioCopy strong {
+  color: var(--clr-text);
+}
+
+.bioCopy p + p {
+  margin-top: var(--space-4);
+}
+
+.flightWrap {
+  position: relative;
+  margin-top: var(--space-12);
+}
+
+.flightSvg {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+.flightPlane {
+  position: absolute;
+  right: 6%;
+  top: -6px;
+  width: 52px;
+}
