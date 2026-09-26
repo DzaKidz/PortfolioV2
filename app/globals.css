@@ -2411,18 +2411,13 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
   perspective: 1100px;
 }
 
-.skills-grid .tilt,
-.skills-grid .tilt .skill-card {
+.skills-grid .skill-card {
   height: 100%;
 }
 
 .tilt {
   transform-style: preserve-3d;
   will-change: transform;
-}
-
-.tilt-block {
-  width: 100%;
 }
 
 

@@ -295,7 +295,7 @@
   box-shadow: var(--shadow-md);
 }
 
-.workGrid > :nth-child(2) .workCard {
+.workGrid > :nth-child(2) {
   transform: translateY(var(--space-8));
 }
 
@@ -382,8 +382,7 @@
   align-items: stretch;
 }
 
-.triGrid .tilt,
-.triGrid .tilt .triCard {
+.triGrid .triCard {
   height: 100%;
 }
 
@@ -733,7 +732,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .workGrid > :nth-child(2) .workCard {
+  .workGrid > :nth-child(2) {
     transform: none;
   }
 

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
-import Tilt from "@/components/Tilt";
 
 interface Errors {
   name?: string;
@@ -91,8 +90,7 @@ export default function ContactPage() {
                 .
               </p>
 
-              <div className="quick-contacts tilt-stage">
-                <Tilt className="tilt-block" max={4}>
+              <div className="quick-contacts">
                 <a
                   href="https://wa.me/6285643155260"
                   className="quick-contact-btn"
@@ -112,9 +110,7 @@ export default function ContactPage() {
                     <span className="value">+62 856 4315 5260</span>
                   </span>
                 </a>
-                </Tilt>
 
-                <Tilt className="tilt-block" max={4}>
                 <a
                   href="https://t.me/dzakyms"
                   className="quick-contact-btn"
@@ -134,9 +130,7 @@ export default function ContactPage() {
                     <span className="value">@dzakyms</span>
                   </span>
                 </a>
-                </Tilt>
 
-                <Tilt className="tilt-block" max={4}>
                 <a
                   href="mailto:ahmaddzakyms@gmail.com"
                   className="quick-contact-btn"
@@ -154,7 +148,6 @@ export default function ContactPage() {
                     <span className="value">ahmaddzakyms@gmail.com</span>
                   </span>
                 </a>
-                </Tilt>
               </div>
 
               <h3 className="section-label mb-4">{t.contact.findMe}</h3>
@@ -406,7 +399,6 @@ export default function ContactPage() {
         aria-labelledby="faq-heading"
       >
         <div className="container">
-          <Tilt max={3}>
           <div className="glass-card faq-card reveal">
             <h2 className="section-headTitle mb-6" id="faq-heading">
               {t.contact.faqTitle}
@@ -438,7 +430,6 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          </Tilt>
         </div>
       </section>
     </main>

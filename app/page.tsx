@@ -300,9 +300,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={`${styles.workGrid} tilt-stage`}>
+          <div className={styles.workGrid}>
             {FEATURED.map((p, i) => (
-              <Tilt key={p.id} max={7}>
               <article
                 className={`${styles.workCard} reveal reveal-delay-${i + 1}`}
               >
@@ -335,7 +334,6 @@ export default function Home() {
                   </Link>
                 </div>
               </article>
-              </Tilt>
             ))}
           </div>
         </div>
@@ -355,21 +353,19 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={`${styles.triGrid} tilt-stage`}>
+          <div className={styles.triGrid}>
             {t.home.tri.map((card, i) => (
-              <Tilt key={card.title} max={6}>
-                <div
-                  className={
-                    `${styles.triCard}` +
-                    (i === 1 ? ` ${styles.triCardAccent}` : "") +
-                    ` reveal${i > 0 ? ` reveal-delay-${i}` : ""}`
-                  }
-                >
-                  <span className={styles.triIndex}>{card.index}</span>
-                  <h3 className={styles.triTitle}>{card.title}</h3>
-                  <p className={styles.triText}>{card.desc}</p>
-                </div>
-              </Tilt>
+              <div
+                className={
+                  `${styles.triCard}` +
+                  (i === 1 ? ` ${styles.triCardAccent}` : "") +
+                  ` reveal${i > 0 ? ` reveal-delay-${i}` : ""}`
+                }
+              >
+                <span className={styles.triIndex}>{card.index}</span>
+                <h3 className={styles.triTitle}>{card.title}</h3>
+                <p className={styles.triText}>{card.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -387,9 +383,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={`${styles.playGrid} tilt-stage`}>
+          <div className={styles.playGrid}>
             {t.home.play.map((ex, i) => (
-              <Tilt key={ex.title} max={9} scale={1.03}>
               <div
                 className={
                   `${styles.playTile} ` +
@@ -412,7 +407,6 @@ export default function Home() {
                 <h3 className={styles.playTitle}>{ex.title}</h3>
                 <p className={styles.playDesc}>{ex.desc}</p>
               </div>
-              </Tilt>
             ))}
           </div>
         </div>

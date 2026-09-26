@@ -5,7 +5,6 @@ import { useReveal } from "@/hooks/useReveal";
 import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
 import Parallax from "@/components/Parallax";
-import Tilt from "@/components/Tilt";
 
 const TOOLS = [
   { icon: "🎨", name: "Illustrator" },
@@ -58,28 +57,26 @@ export default function AboutPage() {
           <div className="about-grid">
             <aside className="about-avatar-col reveal">
               <Parallax speed={0.05}>
-                <Tilt max={7}>
-                  <div className="about-avatar-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/avatar.jpg"
-                  alt="Ahmad Dzaky"
-                  onError={(e) => {
-                    e.currentTarget.style.background =
-                      "linear-gradient(135deg,#EEE8D2,#F4CD44)";
-                  }}
-                />
-                <div className="about-avatar-glow" aria-hidden="true"></div>
-                <div className="about-info-badge">
-                  <p>{t.about.location}</p>
-                  <strong>Jakarta, Indonesia</strong>
-                  <p className="mt-2">{t.about.status}</p>
-                  <strong className="text-green">
-                    {t.about.statusValue}
-                  </strong>
+                <div className="about-avatar-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/avatar.jpg"
+                    alt="Ahmad Dzaky"
+                    onError={(e) => {
+                      e.currentTarget.style.background =
+                        "linear-gradient(135deg,#EEE8D2,#F4CD44)";
+                    }}
+                  />
+                  <div className="about-avatar-glow" aria-hidden="true"></div>
+                  <div className="about-info-badge">
+                    <p>{t.about.location}</p>
+                    <strong>Jakarta, Indonesia</strong>
+                    <p className="mt-2">{t.about.status}</p>
+                    <strong className="text-green">
+                      {t.about.statusValue}
+                    </strong>
+                  </div>
                 </div>
-              </div>
-                </Tilt>
               </Parallax>
 
               <div className="mt-8">
@@ -138,14 +135,12 @@ export default function AboutPage() {
                 <h2 className="section-headTitle mb-6">
                   {t.about.toolsTitle}
                 </h2>
-                <div className="skills-grid tilt-stage">
+                <div className="skills-grid">
                   {TOOLS.map((t) => (
-                    <Tilt key={t.name} max={6} scale={1.05}>
-                      <div className="skill-card" title={t.name}>
-                        <span className="skill-icon">{t.icon}</span>
-                        <span className="skill-name">{t.name}</span>
-                      </div>
-                    </Tilt>
+                    <div className="skill-card" title={t.name}>
+                      <span className="skill-icon">{t.icon}</span>
+                      <span className="skill-name">{t.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>

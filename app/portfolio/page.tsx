@@ -12,7 +12,6 @@ import {
 import { useReveal } from "@/hooks/useReveal";
 import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
-import Tilt from "@/components/Tilt";
 
 type Filter = "all" | ProjectCategory;
 
@@ -125,18 +124,17 @@ export default function PortfolioPage() {
           </div>
 
           <div
-            className="portfolio-grid tilt-stage"
+            className="portfolio-grid"
             id="portfolio-grid"
             aria-live="polite"
             aria-label="Daftar karya"
           >
             {filtered.map((p, idx) => (
-              <Tilt key={p.id} max={6}>
-                <div
-                  className="portfolio-item reveal visible"
-                  style={{ transitionDelay: `${(idx % 3) * 0.08}s` }}
-                  data-category={p.category}
-                >
+              <div
+                className="portfolio-item reveal visible"
+                style={{ transitionDelay: `${(idx % 3) * 0.08}s` }}
+                data-category={p.category}
+              >
                 <article className="project-card">
                   <div className="project-thumb">
                     <ThumbMedia project={p} />
@@ -202,8 +200,7 @@ export default function PortfolioPage() {
                     </div>
                   </div>
                 </article>
-                </div>
-              </Tilt>
+              </div>
             ))}
           </div>
         </div>
@@ -214,7 +211,6 @@ export default function PortfolioPage() {
         aria-labelledby="collab-heading"
       >
         <div className="container">
-          <Tilt max={4}>
           <div className="text-center reveal">
             <p className="section-desc mb-4">
               {t.portfolio.collabText}
@@ -231,7 +227,6 @@ export default function PortfolioPage() {
               {t.portfolio.collabCta}
             </Link>
           </div>
-          </Tilt>
         </div>
       </section>
 
