@@ -58,7 +58,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://instagram.com/ahmadzaky"
+                  href="https://instagram.com/dzakyms_"
                   target="_blank"
                   rel="noopener"
                   className="footer-link"
@@ -78,7 +78,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/ahmadzaky"
+                  href="https://github.com/DzaKidz"
                   target="_blank"
                   rel="noopener"
                   className="footer-link"
@@ -154,7 +154,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://instagram.com/ahmadzaky"
+              href="https://instagram.com/dzakyms_"
               className="social-link"
               target="_blank"
               rel="noopener"
