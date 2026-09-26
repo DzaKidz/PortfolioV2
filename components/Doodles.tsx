@@ -239,7 +239,7 @@ export function StarField({ className = "", style }: DoodleProps) {
           cy={cy}
           r={r}
           fill="#FFFDF8"
-          className={`sky-star-g${g}`}
+          className={r >= 0.28 ? `sky-star-g${g}` : "sky-star"}
         />
       ))}
     </svg>

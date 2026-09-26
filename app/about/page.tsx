@@ -137,7 +137,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="skills-grid">
                   {TOOLS.map((t) => (
-                    <div className="skill-card" title={t.name}>
+                    <div key={t.name} className="skill-card" title={t.name}>
                       <span className="skill-icon">{t.icon}</span>
                       <span className="skill-name">{t.name}</span>
                     </div>

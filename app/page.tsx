@@ -303,6 +303,7 @@ export default function Home() {
           <div className={styles.workGrid}>
             {FEATURED.map((p, i) => (
               <article
+                key={p.id}
                 className={`${styles.workCard} reveal reveal-delay-${i + 1}`}
               >
                 <div className={styles.thumb}>
@@ -356,6 +357,7 @@ export default function Home() {
           <div className={styles.triGrid}>
             {t.home.tri.map((card, i) => (
               <div
+                key={card.title}
                 className={
                   `${styles.triCard}` +
                   (i === 1 ? ` ${styles.triCardAccent}` : "") +
@@ -386,6 +388,7 @@ export default function Home() {
           <div className={styles.playGrid}>
             {t.home.play.map((ex, i) => (
               <div
+                key={ex.title}
                 className={
                   `${styles.playTile} ` +
                   (PLAY_STYLE[i].tone === "sand"

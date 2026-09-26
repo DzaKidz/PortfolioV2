@@ -131,6 +131,7 @@ export default function PortfolioPage() {
           >
             {filtered.map((p, idx) => (
               <div
+                key={p.id}
                 className="portfolio-item reveal visible"
                 style={{ transitionDelay: `${(idx % 3) * 0.08}s` }}
                 data-category={p.category}

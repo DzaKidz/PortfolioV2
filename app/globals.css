@@ -2500,6 +2500,10 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
 }
 
 /* Kelip bintang langit malam */
+.sky-star {
+  opacity: 0.72;
+}
+
 .sky-star-g0 {
   animation: star-tw 2.4s ease-in-out infinite;
 }
@@ -2681,6 +2685,7 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
   }
 }
 
+/* ============================================================
    UTILITIES
    ============================================================ */
 .text-green {
