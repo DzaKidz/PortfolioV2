@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 
 // Default theme is the warm paper aesthetic (DESIGN.md [detected]
 // background #FFF9F1). Only opt out to dark when the visitor asked for it.
-const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`;
+const THEME_INIT_SCRIPT = `(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
