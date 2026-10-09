@@ -342,12 +342,6 @@ body::before {
   font-size: 1.4rem;
 }
 
-.quick-contact-icon--tg {
-  background: rgba(0, 136, 204, 0.12);
-  color: #0088cc;
-  font-size: 1.4rem;
-}
-
 .quick-contact-icon--mail {
   background: rgba(99, 102, 241, 0.12);
   color: var(--clr-primary-lt);
