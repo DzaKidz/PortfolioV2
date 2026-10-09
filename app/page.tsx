@@ -184,7 +184,7 @@ export default function Home() {
       {/* ============ BIO + FLIGHT PATH ============ */}
       <section className={styles.bioSection} aria-label="Tentang singkat">
         <div className="container">
-          <div className={styles.bioGrid}>
+          <div className={styles.bioWrap}>
             <div className={`${styles.bioCopy} reveal`}>
               <p>
                 <strong>{t.home.bioLead1}</strong>
