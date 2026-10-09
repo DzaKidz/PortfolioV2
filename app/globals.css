@@ -2763,3 +2763,111 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
 .gap-4 {
   gap: var(--space-4);
 }
+
+/* ============================================================
+   PROJECT CAROUSEL (Embla) — embedded inside modal thumb
+   ============================================================ */
+.project-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.project-carousel__viewport {
+  overflow: hidden;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.project-carousel__slides {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.project-carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  position: relative;
+}
+
+.project-carousel__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+/* Navigation arrows */
+.project-carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
+  color: var(--clr-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+}
+
+.project-carousel__btn:hover {
+  background: var(--clr-primary);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.project-carousel__btn--prev {
+  left: var(--space-3);
+}
+
+.project-carousel__btn--next {
+  right: var(--space-3);
+}
+
+/* Dots */
+.project-carousel__dots {
+  position: absolute;
+  bottom: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-2);
+  z-index: 2;
+}
+
+.project-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--clr-border);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+  padding: 0;
+}
+
+.project-carousel__dot.is-selected {
+  background: var(--clr-accent-2);
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* Lightbox counter */
+.lightbox-counter {
+  display: inline-block;
+  margin-left: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+  vertical-align: middle;
+}

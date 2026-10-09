@@ -83,6 +83,7 @@ export interface Dict {
     repo: string;
     close: string;
     expand: string;
+    galleryLabel: string;
   };
   about: {
     kicker: string;
@@ -270,6 +271,7 @@ const id: Dict = {
     repo: "GitHub Repo",
     close: "Tutup",
     expand: "Lihat Lengkap",
+    galleryLabel: "Galeri",
   },
   about: {
     kicker: "Tentang Saya",
@@ -511,6 +513,7 @@ const en: Dict = {
     repo: "GitHub Repo",
     close: "Close",
     expand: "View Full",
+    galleryLabel: "Gallery",
   },
   about: {
     kicker: "About Me",

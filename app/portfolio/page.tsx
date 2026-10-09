@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   PROJECTS,
   badgeClassFor,
@@ -12,6 +12,7 @@ import {
 import { useReveal } from "@/hooks/useReveal";
 import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
+import ProjectCarousel from "@/components/ProjectCarousel";
 
 type Filter = "all" | ProjectCategory;
 
@@ -57,6 +58,15 @@ export default function PortfolioPage() {
   const [filter, setFilter] = useState<Filter>("all");
   const [active, setActive] = useState<Project | null>(null);
   const [lightbox, setLightbox] = useState<Project | null>(null);
+  const [lightboxSlideIndex, setLightboxSlideIndex] = useState(0);
+
+  const openLightbox = useCallback(
+    (project: Project, slideIndex?: number) => {
+      setLightbox(project);
+      if (typeof slideIndex === "number") setLightboxSlideIndex(slideIndex);
+    },
+    []
+  );
 
   const filtered = useMemo(
     () =>
@@ -253,30 +263,43 @@ export default function PortfolioPage() {
                 ✕
               </button>
               <div className="modal-thumb">
-                <ThumbMedia
-                  project={active}
-                  zoomable
-                  onZoom={() => !isVideoThumb(active.thumb) && setLightbox(active)}
-                />
-                {!isVideoThumb(active.thumb) && (
-                  <button
-                    type="button"
-                    className="modal-thumb-expand"
-                    onClick={() => setLightbox(active)}
-                  >
-                    <svg
-                      width="14"
-                      height="14"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4" />
-                    </svg>
-                    {t.portfolio.expand}
-                  </button>
+                {active.gallery && active.gallery.length >= 2 ? (
+                  <ProjectCarousel
+                    images={active.gallery}
+                    onImageClick={(index) =>
+                      openLightbox(active, index)
+                    }
+                  />
+                ) : (
+                  <ThumbMedia
+                    project={active}
+                    zoomable
+                    onZoom={() =>
+                      !isVideoThumb(active.thumb) &&
+                      openLightbox(active)
+                    }
+                  />
                 )}
+                {!isVideoThumb(active.thumb) &&
+                  !(active.gallery && active.gallery.length >= 2) && (
+                    <button
+                      type="button"
+                      className="modal-thumb-expand"
+                      onClick={() => openLightbox(active)}
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4" />
+                      </svg>
+                      {t.portfolio.expand}
+                    </button>
+                  )}
               </div>
               <div className="modal-body">
                 <div className="modal-meta">
@@ -353,7 +376,7 @@ export default function PortfolioPage() {
         </div>
       </div>
 
-      {/* LIGHTBOX */}
+      {/* LIGHTBOX — shows the current carousel slide at full size */}
       <div
         id="lightbox-overlay"
         className={`lightbox-overlay${lightbox ? " open" : ""}`}
@@ -364,22 +387,37 @@ export default function PortfolioPage() {
           if (e.target === e.currentTarget) setLightbox(null);
         }}
       >
-        {lightbox && !isVideoThumb(lightbox.thumb) && (
-          <figure id="lightbox-figure" className="lightbox-figure">
-            <button
-              className="lightbox-close"
-              onClick={() => setLightbox(null)}
-              aria-label="Tutup tampilan penuh"
-            >
-              ✕
-            </button>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img id="lightbox-img" src={lightbox.thumb} alt={lightbox.title} />
-            <figcaption id="lightbox-caption" className="lightbox-caption">
-              {lightbox.title}
-            </figcaption>
-          </figure>
-        )}
+        {lightbox &&
+          !isVideoThumb(lightbox.thumb) &&
+          (() => {
+            const gallery =
+              lightbox.gallery && lightbox.gallery.length >= 2
+                ? lightbox.gallery
+                : [lightbox.thumb];
+            const src = gallery[lightboxSlideIndex] ?? gallery[0];
+            if (!src) return null;
+            return (
+              <figure id="lightbox-figure" className="lightbox-figure">
+                <button
+                  className="lightbox-close"
+                  onClick={() => setLightbox(null)}
+                  aria-label="Tutup tampilan penuh"
+                >
+                  ✕
+                </button>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img id="lightbox-img" src={src} alt={`${lightbox.title} — slide ${lightboxSlideIndex + 1}`} />
+                <figcaption id="lightbox-caption" className="lightbox-caption">
+                  {lightbox.title}
+                  {gallery.length >= 2 && (
+                    <span className="lightbox-counter">
+                      {lightboxSlideIndex + 1} / {gallery.length}
+                    </span>
+                  )}
+                </figcaption>
+              </figure>
+            );
+          })()}
       </div>
     </main>
   );

@@ -14,6 +14,8 @@ export interface Project {
   role: string;
   year: string;
   thumb: string;
+  /** Additional images for carousel. When length >= 2, modal renders ProjectCarousel. */
+  gallery?: string[];
   live: string | null;
   repo: string | null;
 }
@@ -51,6 +53,11 @@ export const PROJECTS: Project[] = [
     role: "Lead Graphic Designer",
     year: "2026",
     thumb: "/images/Poster Mental Health.jpg",
+    gallery: [
+      "/images/Poster Mental Health.jpg",
+      "/images/avatar.jpg",
+      "/images/avatar2.jpg",
+    ],
     live: "#",
     repo: null,
   },
@@ -151,6 +158,11 @@ export const PROJECTS: Project[] = [
     role: "Graphic Designer",
     year: "2023",
     thumb: "/images/Poster Mental Health.jpg",
+    gallery: [
+      "/images/Poster Mental Health.jpg",
+      "/images/avatar.jpg",
+      "/images/avatar2.jpg",
+    ],
     live: "#",
     repo: null,
   },
