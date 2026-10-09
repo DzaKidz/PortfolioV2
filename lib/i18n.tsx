@@ -158,11 +158,11 @@ const id: Dict = {
     langLabel: "Pilih bahasa",
   },
   home: {
-    hello: "✳ Halo — Saya Dzaky ✳",
+    hello: " Halo — Saya Dzaky ",
     titleA: "Visuals",
     titleB: "pulse",
     skySub: "Folio © 2026 · Jawa Tengah, ID · Design · Motion · Code",
-    hint: "Psst — matahari bisa digeser ✦",
+    hint: "Psst — matahari bisa digeser",
     rotating: [
       "brand identities",
       "motion systems",
@@ -406,7 +406,7 @@ const en: Dict = {
     langLabel: "Choose language",
   },
   home: {
-    hello: "✳ Hello — I'm Dzaky ✳",
+    hello: " Hello — I'm Dzaky ",
     titleA: "Visuals",
     titleB: "pulse",
     skySub: "Folio © 2026 · Jakarta, ID · Design · Motion · Code",

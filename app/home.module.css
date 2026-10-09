@@ -1089,7 +1089,7 @@
 .deckWrap {
   position: relative;
   z-index: 3;
-  max-width: 852px;
+  max-width: 800px;
   margin: calc(var(--space-8) * -1) auto 0;
   padding: 0 var(--space-4);
 }
@@ -1158,10 +1158,11 @@
   padding: var(--space-16) 0 var(--space-8);
 }
 
-.bioWrap {
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: center;
+.bioGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: center;
 }
 
 .bioCopy {
@@ -1169,6 +1170,7 @@
   font-size: 1.05rem;
   line-height: 1.85;
   color: var(--clr-text-muted);
+  max-width: 36rem;
 }
 
 .bioCopy strong {
