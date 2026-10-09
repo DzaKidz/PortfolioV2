@@ -6,7 +6,6 @@ import { PROJECTS, isVideoThumb } from "@/lib/projects";
 import { useLanguage } from "@/lib/i18n";
 import { useReveal } from "@/hooks/useReveal";
 import Parallax from "@/components/Parallax";
-import Tilt from "@/components/Tilt";
 import Boop from "@/components/Boop";
 import SkySun from "@/components/SkySun";
 import {
@@ -167,17 +166,6 @@ export default function Home() {
 
         <div className={styles.deckWrap}>
           <div className={`${styles.deckBar} reveal reveal-delay-2`}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/avatar.jpg"
-              alt=""
-              aria-hidden="true"
-              className={styles.deckAvatar}
-              onError={(e) => {
-                e.currentTarget.style.background =
-                  "linear-gradient(135deg,#EEE8D2,#F4CD44)";
-              }}
-            />
             <p className={styles.deckText} aria-live="polite">
               <strong>Ahmad Dzaky</strong> — {t.home.deckRole(word)}
               <span className="text-green"> {t.home.deckOpen}</span>
@@ -216,30 +204,6 @@ export default function Home() {
                 </Link>
               </p>
             </div>
-
-            <Parallax
-              speed={0.06}
-              className="reveal reveal-delay-1 tilt-stage"
-            >
-              <Tilt max={11} scale={1.06} shift={16} lead={12}>
-                <figure className={styles.portraitCard}>
-                  <span className={styles.sticker}>Hi, I&apos;m Dzaky ✳</span>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/avatar.jpg"
-                    alt="Portrait of Ahmad Dzaky"
-                    onError={(e) => {
-                      e.currentTarget.style.background =
-                        "linear-gradient(135deg,#EEE8D2,#F4CD44)";
-                    }}
-                  />
-                  <figcaption className={styles.portraitCap}>
-                    <span>Visual creator</span>
-                    <span>EST. 2023</span>
-                  </figcaption>
-                </figure>
-              </Tilt>
-            </Parallax>
           </div>
 
           <div className={styles.flightWrap} aria-hidden="true">

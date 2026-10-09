@@ -124,89 +124,6 @@
   box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.2);
 }
 
-.portraitCard {
-  position: relative;
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transform: rotate(2deg);
-  transition: transform var(--dur-base) var(--ease-out),
-    box-shadow var(--dur-base) var(--ease-out);
-}
-
-/* Kilau kaca menyapu saat kartu dimiringkan (3D oleh Tilt) */
-.portraitCard::after {
-  content: "";
-  position: absolute;
-  inset: -30% -60%;
-  background: linear-gradient(
-    112deg,
-    transparent 38%,
-    rgba(255, 255, 255, 0.55) 48%,
-    rgba(255, 255, 255, 0.12) 55%,
-    transparent 64%
-  );
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s var(--ease-out), transform 0.6s var(--ease-out);
-  transform: translateX(-38%);
-}
-
-:global(.tilt):hover .portraitCard {
-  box-shadow: 0 34px 60px -26px rgba(12, 26, 42, 0.55),
-    0 0 0 1px rgba(0, 0, 0, 0.16);
-}
-
-:global(.tilt):hover .portraitCard::after {
-  opacity: 1;
-  transform: translateX(24%);
-}
-
-.portraitCard:hover {
-  transform: rotate(0deg) translateY(-4px);
-}
-
-.portraitCard img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-}
-
-.portraitCap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--space-3) var(--space-4);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--clr-text-muted);
-  border-top: 1px solid var(--clr-border);
-}
-
-.sticker {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #000;
-  background: var(--clr-accent-2);
-  border: 1px solid #000;
-  border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-4);
-  transform: rotate(6deg);
-  box-shadow: var(--shadow-sm);
-}
-
 /* Accent marquee strip */
 .marquee {
   background: var(--clr-accent-2);
@@ -1243,7 +1160,7 @@
 
 .bioGrid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
   gap: var(--space-12);
   align-items: center;
 }
