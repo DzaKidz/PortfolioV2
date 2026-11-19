@@ -60,7 +60,7 @@ export default function AboutPage() {
                 <div className="about-avatar-wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/avatar.jpg"
+                    src="/images/avatar-640.jpg"
                     alt="Ahmad Dzaky"
                     width={640}
                     height={640}

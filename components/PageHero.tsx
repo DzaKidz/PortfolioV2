@@ -14,7 +14,7 @@ interface PageHeroProps {
 /**
  * Hero seragam untuk inner pages: kicker mono, judul serif, doodle
  * melayang dengan parallax berlapis. Server component yang
- * mengomposisikan <Parallax/> (client) — pola komposisi resmi Next.
+ * mengomposisikan <Parallax/> (client) - pola komposisi resmi Next.
  */
 export default function PageHero({
   kicker,

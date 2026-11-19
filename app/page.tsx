@@ -37,7 +37,7 @@ const PLAY_STYLE = [
   { glyph: "Aa", tone: "" },
   { glyph: "▦", tone: "sand" },
   { glyph: "◐", tone: "accent" },
-  { glyph: "✳", tone: "ink" },
+  { glyph: "◧", tone: "ink" },
 ];
 
 const FEATURED = [PROJECTS[0], PROJECTS[1], PROJECTS[3]];
@@ -235,7 +235,7 @@ export default function Home() {
             <span key={copy} style={{ display: "contents" }}>
               {t.home.marquee.map((item) => (
                 <span key={`${copy}-${item}`}>
-                  {item} <span>✳</span>
+                  {item} <span>·</span>
                 </span>
               ))}
             </span>

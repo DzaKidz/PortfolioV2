@@ -4,6 +4,7 @@ import { useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import classNames from "embla-carousel-class-names";
+import { useLanguage } from "@/lib/i18n";
 
 interface ProjectCarouselProps {
   images: string[];
@@ -14,6 +15,7 @@ export default function ProjectCarousel({
   images,
   onImageClick,
 }: ProjectCarouselProps) {
+  const { t } = useLanguage();
   const SCROLL_OPTS = { loop: true, dragFree: true, duration: 30 };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -61,7 +63,7 @@ export default function ProjectCarousel({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={src}
-                alt={`Gambar proyek ${i + 1}`}
+                alt={`${t.portfolio.slideLabel} ${i + 1}`}
                 loading="lazy"
                 className="project-carousel__img"
                 onError={(e) => {
@@ -78,7 +80,7 @@ export default function ProjectCarousel({
         type="button"
         className="project-carousel__btn project-carousel__btn--prev"
         onClick={scrollPrev}
-        aria-label="Gambar sebelumnya"
+        aria-label={t.portfolio.prevLabel}
       >
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
           <path d="M15 19l-7-7 7-7" />
@@ -88,7 +90,7 @@ export default function ProjectCarousel({
         type="button"
         className="project-carousel__btn project-carousel__btn--next"
         onClick={scrollNext}
-        aria-label="Gambar berikutnya"
+        aria-label={t.portfolio.nextLabel}
       >
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
           <path d="M9 5l7 7-7 7" />
@@ -103,7 +105,7 @@ export default function ProjectCarousel({
             type="button"
             className="project-carousel__dot"
             onClick={() => emblaApi?.scrollTo(i)}
-            aria-label={`Slide ${i + 1} dari ${total}`}
+            aria-label={`${t.portfolio.slideLabel} ${i + 1}/${total}`}
           />
         ))}
       </div>

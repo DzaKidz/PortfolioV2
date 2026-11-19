@@ -25,6 +25,7 @@ export interface Dict {
     contact: string;
     hire: string;
     menu: string;
+    mainLabel: string;
     langLabel: string;
   };
   home: {
@@ -84,6 +85,12 @@ export interface Dict {
     close: string;
     expand: string;
     galleryLabel: string;
+    filterLabel: string;
+    gridLabel: string;
+    lightboxLabel: string;
+    prevLabel: string;
+    nextLabel: string;
+    slideLabel: string;
   };
   about: {
     kicker: string;
@@ -157,6 +164,7 @@ const id: Dict = {
     contact: "Kontak",
     hire: "Ajak kerja sama",
     menu: "Buka menu",
+    mainLabel: "Navigasi utama",
     langLabel: "Pilih bahasa",
   },
   home: {
@@ -274,6 +282,12 @@ const id: Dict = {
     close: "Tutup",
     expand: "Lihat penuh",
     galleryLabel: "Galeri",
+    filterLabel: "Filter karya",
+    gridLabel: "Daftar karya",
+    lightboxLabel: "Tampilan penuh karya",
+    prevLabel: "Gambar sebelumnya",
+    nextLabel: "Gambar berikutnya",
+    slideLabel: "Slide",
   },
   about: {
     kicker: "Tentang Saya",
@@ -409,6 +423,7 @@ const en: Dict = {
     contact: "Contact",
     hire: "Start a project",
     menu: "Open menu",
+    mainLabel: "Main navigation",
     langLabel: "Choose language",
   },
   home: {
@@ -440,7 +455,7 @@ const en: Dict = {
     bioP2a: "Then one more thing: ",
     bioLead2: "finish it in the browser",
     bioP2b:
-      ". Everything below arrives as a web interface, not just an exported file.",
+      ". Everything below is built as a web interface rather than an exported file.",
     bioCta: "More about me",
     workA: "Selected",
     workB: "work",
@@ -526,6 +541,12 @@ const en: Dict = {
     close: "Close",
     expand: "View full",
     galleryLabel: "Gallery",
+    filterLabel: "Work filter",
+    gridLabel: "Work list",
+    lightboxLabel: "Full-size view",
+    prevLabel: "Previous image",
+    nextLabel: "Next image",
+    slideLabel: "Slide",
   },
   about: {
     kicker: "About Me",

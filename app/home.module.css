@@ -1,4 +1,4 @@
-/* Editorial homepage — original implementation guided by DESIGN.md
+/* Editorial homepage - original implementation guided by DESIGN.md
    detected tokens (paper #FFF9F1, sand #EEE8D2, accent #F4CD44,
    serif display + mono kickers, 18px radii, pill buttons).
    No reference-site assets, copy, or layouts reproduced. */
@@ -38,8 +38,7 @@
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--clr-text);
   margin-bottom: var(--space-6);
 }
@@ -141,8 +140,7 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: #000;
   white-space: nowrap;
 }
@@ -284,8 +282,7 @@
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--clr-text-muted);
 }
 
@@ -324,7 +321,7 @@
   text-underline-offset: 4px;
 }
 
-/* Triptych — designer-who-codes posture, original copy */
+/* Triptych - designer-who-codes posture, original copy */
 .triGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -401,8 +398,7 @@
 .triIndex {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   opacity: 0.65;
   display: flex;
   align-items: center;
@@ -495,7 +491,7 @@
 .playIndex {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.06em;
 }
 
 .playTitle {
@@ -595,8 +591,7 @@
 .ctaKicker {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--clr-accent-2);
   display: block;
   margin-bottom: var(--space-4);
@@ -889,8 +884,7 @@
   gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: #000;
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -990,7 +984,7 @@
   opacity: 0.5;
 }
 
-/* Animasi mengambang tiap elemen langit — ritme berbeda agar hidup */
+/* Animasi mengambang tiap elemen langit - ritme berbeda agar hidup */
 .skyFloat {
   display: block;
   animation: sky-float 7s ease-in-out infinite;
@@ -1083,7 +1077,7 @@
   margin-top: var(--space-4);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   color: #0c1a2a;
   opacity: 0.85;
 }
@@ -1096,7 +1090,7 @@
   color: #FFF9F1;
 }
 
-/* Deck bar — pill konsol yang overlap tepi langit */
+/* Deck bar - pill konsol yang overlap tepi langit */
 .deckWrap {
   position: relative;
   z-index: 3;
@@ -1169,7 +1163,7 @@
   padding: var(--space-16) 0 var(--space-8);
 }
 
-.bioGrid {
+.bioWrap {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-12);

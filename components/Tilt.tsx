@@ -13,8 +13,8 @@ interface TiltProps {
   /** Skala saat disentuh pointer. */
   scale?: number;
   /**
-   * Jeda geser kartu (px) yang mengikuti arah kedatangan kursor —
-   * kursor masuk dari kiri → kartu bergeser ke kiri. 0 = nonaktif.
+   * Jeda geser kartu (px) yang mengikuti arah kedatangan kursor -
+   * kursor masuk dari kiri maka kartu bergeser ke kiri. 0 = nonaktif.
    */
   shift?: number;
   /**

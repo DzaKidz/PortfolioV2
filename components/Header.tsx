@@ -15,7 +15,6 @@ export default function Header() {
     { href: "/", label: t.nav.home },
     { href: "/portfolio", label: t.nav.work },
     { href: "/about", label: t.nav.about },
-    // { href: "/contact", label: t.nav.contact },
   ];
 
   useEffect(() => {
@@ -30,7 +29,16 @@ export default function Header() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open ]);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -59,7 +67,7 @@ export default function Header() {
   return (
     <>
       <header id="navbar" className={`navbar${scrolled ? " scrolled" : ""}`}>
-        <nav className="nav-inner" aria-label="Navigasi utama">
+        <nav className="nav-inner" aria-label={t.nav.mainLabel}>
           <Link href="/" className="nav-logo">
             <span>Ahmad Dzaky</span>
           </Link>

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 /* =============================================================
-   DESIGN SYSTEM — Ahmad Dzaky Portfolio
+   DESIGN SYSTEM - Ahmad Dzaky Portfolio
    Font Space Grotesk dimuat via <link> di app/layout.tsx
    ============================================================= */
 
@@ -8,7 +8,7 @@
    CSS VARIABLES
    ============================================================ */
 /* ============================================================
-   CSS VARIABLES — warm paper system (DESIGN.md, all [detected])
+   CSS VARIABLES - warm paper system (DESIGN.md, all [detected])
    bg #FFF9F1 · surface #FDF1E1 · sand #EEE8D2 · accent #F4CD44
    ink #000000 · body Space Grotesk · heading DM Serif Display
    mono JetBrains Mono · radius base 18px · unit 4px
@@ -70,7 +70,7 @@
   --radius-xl: 26px;
   --radius-full: 9999px;
 
-  /* Shadows — soft warm, no neon glow */
+  /* Shadows - soft warm, no neon glow */
   --shadow-sm: 0 2px 8px rgba(60, 45, 10, 0.08);
   --shadow-md: 0 4px 24px rgba(60, 45, 10, 0.10);
   --shadow-lg: 0 8px 48px rgba(60, 45, 10, 0.14);
@@ -90,7 +90,7 @@
 }
 
 /* ============================================================
-   DARK THEME — warm charcoal, opt-in via data-theme="dark".
+   DARK THEME - warm charcoal, opt-in via data-theme="dark".
    Default (no attribute) is the warm paper system above.
    ============================================================ */
 [data-theme="dark"] {
@@ -285,7 +285,7 @@ body::before {
 }
 
 /* ------------------------------------------------------------
-   SECTION SYSTEM — padanan global headRow / headTitle / headNote
+   SECTION SYSTEM - padanan global headRow / headTitle / headNote
    dari beranda, supaya judul sub-bagian di semua halaman seragam.
    ------------------------------------------------------------ */
 .section-flush {
@@ -301,7 +301,7 @@ body::before {
   color: var(--clr-text);
 }
 
-/* Kontak — judul kartu & sub-teks */
+/* Kontak - judul kartu & sub-teks */
 .form-title {
   font-family: var(--font-sans);
   font-size: 1.25rem;
@@ -322,7 +322,7 @@ body::before {
   color: var(--clr-primary-lt);
 }
 
-/* Kontak — kartu FAQ */
+/* Kontak - kartu FAQ */
 .faq-card {
   padding: var(--space-8);
   background: var(--clr-surface);
@@ -347,7 +347,7 @@ body::before {
   line-height: 1.65;
 }
 
-/* Kontak — warna merek tombol cepat */
+/* Kontak - warna merek tombol cepat */
 .quick-contact-icon--wa {
   background: rgba(37, 211, 102, 0.12);
   color: #25d366;
@@ -367,6 +367,11 @@ body::before {
   padding: 0 0.08em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+
+/* Punctuation accent used at the end of display headings */
+.accent-dot {
+  color: var(--clr-accent);
 }
 
 [data-theme="dark"] .gradient-text {
@@ -501,7 +506,7 @@ body::before {
   gap: var(--space-2);
 }
 
-/* Language switch — pill ID | EN di kiri tombol Hire Me */
+/* Language switch - pill ID | EN di kiri tombol Hire Me */
 .lang-switch {
   display: inline-flex;
   align-items: center;
@@ -519,6 +524,11 @@ body::before {
   letter-spacing: 0.08em;
   color: var(--clr-text-muted);
   border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 32px;
   padding: 4px 10px;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
@@ -541,13 +551,17 @@ body::before {
 .nav-toggle {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
-  width: 28px;
-  padding: 4px 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
 }
 
 .nav-toggle span {
   display: block;
+  width: 22px;
   height: 2px;
   background: var(--clr-text);
   border-radius: 2px;
@@ -678,6 +692,7 @@ body::before {
 .btn-sm {
   padding: var(--space-2) var(--space-4);
   font-size: 0.8rem;
+  min-height: 40px;
 }
 
 .btn-block {
@@ -846,241 +861,6 @@ body::before {
 
   66% {
     transform: translate(-10px, 15px);
-  }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-12);
-  align-items: center;
-  padding-top: calc(var(--nav-height) + var(--space-6));
-  padding-bottom: var(--space-12);
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--clr-primary-lt);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-6);
-  padding: var(--space-2) var(--space-4);
-  background: rgba(194, 148, 0, 0.1);
-  border: 1px solid rgba(194, 148, 0, 0.25);
-  border-radius: var(--radius-full);
-}
-
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  background: var(--clr-primary-lt);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--clr-primary-lt);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: scale(0.8);
-  }
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin-bottom: var(--space-6);
-  color: var(--clr-text);
-}
-
-.hero-title .line-2 {
-  background: var(--grad-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Typing cursor */
-.type-cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background: var(--clr-primary-lt);
-  margin-left: 4px;
-  vertical-align: middle;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-}
-
-.hero-desc {
-  font-size: 1.1rem;
-  color: var(--clr-text-muted);
-  line-height: 1.8;
-  max-width: 520px;
-  margin-bottom: var(--space-12);
-}
-
-.hero-cta {
-  display: flex;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  margin-bottom: var(--space-12);
-}
-
-.hero-stats {
-  display: flex;
-  gap: var(--space-8);
-}
-
-/* Hero avatar */
-.hero-visual {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.avatar-wrap {
-  position: relative;
-  width: 320px;
-  height: 380px;
-}
-
-.avatar-ring {
-  position: absolute;
-  inset: -12px;
-  border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-  background: var(--grad-primary);
-  opacity: 0.2;
-  animation: morph 8s ease-in-out infinite;
-}
-
-@keyframes morph {
-
-  0%,
-  100% {
-    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-  }
-
-  25% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
-
-  75% {
-    border-radius: 60% 40% 50% 40% / 30% 60% 40% 70%;
-  }
-}
-
-.avatar-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 32px;
-  overflow: hidden;
-  border: 1px solid var(--clr-border);
-}
-
-.avatar-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.avatar-badge {
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(10, 10, 20, 0.95);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-full);
-  padding: 0.35rem 1rem;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--clr-text-muted);
-}
-
-.available-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--clr-green);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--clr-green);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-/* Scroll indicator */
-.scroll-hint {
-  position: absolute;
-  bottom: var(--space-10);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--clr-text-faint);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  animation: bounce-soft 2s ease-in-out infinite;
-}
-
-.scroll-hint svg {
-  animation: bounce-soft 2s ease-in-out infinite;
-}
-
-@keyframes bounce-soft {
-
-  0%,
-  100% {
-    transform: translateY(0) translateX(-50%);
-    opacity: 0.6;
-  }
-
-  50% {
-    transform: translateY(6px) translateX(-50%);
-    opacity: 1;
   }
 }
 
@@ -1494,7 +1274,10 @@ body::before {
   font-family: var(--font-mono);
   font-size: 0.82rem;
   font-weight: 500;
-  padding: 0.4rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.4rem 1.1rem;
   border-radius: var(--radius-full);
   border: 1px solid var(--clr-border);
   color: var(--clr-text-muted);
@@ -1617,7 +1400,7 @@ body::before {
   transform: translateY(-2px);
 }
 
-/* Lightbox — shows the uploaded artwork at its full, uncropped size */
+/* Lightbox - shows the uploaded artwork at its full, uncropped size */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -1674,8 +1457,8 @@ body::before {
   position: absolute;
   top: calc(-1 * var(--space-8));
   right: 0;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1708,8 +1491,8 @@ body::before {
   position: absolute;
   top: var(--space-4);
   right: var(--space-4);
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--clr-surface-2);
   border: 1px solid var(--clr-border);
@@ -1895,7 +1678,7 @@ body::before {
   margin-bottom: var(--space-2);
 }
 
-/* Contact Form — flat editorial inputs (DESIGN.md Input [detected]:
+/* Contact Form - flat editorial inputs (DESIGN.md Input [detected]:
    transparent background, ink text, square corners, no shadow) */
 .form-input,
 .form-textarea {
@@ -1984,6 +1767,10 @@ body::before {
   display: flex;
 }
 
+.form-success:focus-visible {
+  outline: none;
+}
+
 .form-success-actions {
   display: flex;
   flex-wrap: wrap;
@@ -2047,6 +1834,8 @@ body::before {
 }
 
 .footer-link {
+  display: inline-block;
+  padding: var(--space-1) 0;
   font-size: 0.9rem;
   color: var(--clr-text-muted);
   transition: color var(--dur-fast);
@@ -2102,6 +1891,13 @@ body::before {
   flex-shrink: 0;
   touch-action: none;
   transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+}
+
+/* 44px tap area without enlarging the visual switch */
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -7px -2px;
 }
 
 .theme-toggle:hover {
@@ -2206,25 +2002,6 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
 /* ============================================================
    PAGE HERO (inner pages)
    ============================================================ */
-.page-hero {
-  padding: calc(var(--nav-height) + var(--space-12)) 0 var(--space-12);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.page-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 700px;
-  height: 450px;
-  background: radial-gradient(ellipse, rgba(194, 148, 0, 0.14), transparent 70%);
-  pointer-events: none;
-}
-
 .page-hero-title {
   font-family: var(--font-serif);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -2319,20 +2096,6 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
     display: flex;
   }
 
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-visual {
-    display: none;
-  }
-
-  .hero-cta,
-  .hero-stats {
-    justify-content: center;
-  }
-
   .contact-grid {
     grid-template-columns: 1fr;
     gap: var(--space-8);
@@ -2363,11 +2126,6 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
 @media (max-width: 480px) {
   .container {
     padding: 0 var(--space-4);
-  }
-
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: var(--space-6);
   }
 
   .skills-grid {
@@ -2446,14 +2204,9 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
   }
 }
 
-/* Boop — animasi klik untuk doodle interaktif */
+/* Boop - click-to-replay animation for decorative doodles */
 .boop {
   border-radius: var(--radius-sm);
-}
-
-.boop:focus-visible {
-  outline: 2px solid var(--clr-accent-2);
-  outline-offset: 3px;
 }
 
 .boop-play {
@@ -2550,7 +2303,7 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
 }
 
 /* ============================================================
-   ATMOSPHERE — aura calm + hembusan angin + debu cahaya melayang.
+   ATMOSPHERE - aura calm + hembusan angin + debu cahaya melayang.
    Murni CSS infinite (tanpa scroll/JS): tenang di semua halaman.
    ============================================================ */
 .atmos-layer {
@@ -2741,7 +2494,7 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
 }
 
 /* ============================================================
-   PROJECT CAROUSEL (Embla) — embedded inside modal thumb
+   PROJECT CAROUSEL (Embla) - embedded inside modal thumb
    ============================================================ */
 .project-carousel {
   position: relative;
@@ -2781,8 +2534,8 @@ html:not([data-theme="dark"]) .theme-toggle-icons svg.icon-sun {
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--clr-border);
   background: var(--clr-surface);

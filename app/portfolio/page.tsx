@@ -51,6 +51,7 @@ function ThumbMedia({
     );
   }
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={project.thumb}
       alt={project.title}
@@ -73,15 +74,35 @@ export default function PortfolioPage() {
   const [lightboxSlideIndex, setLightboxSlideIndex] = useState(0);
   const modalCloseRef = useRef<HTMLButtonElement>(null);
   const lightboxCloseRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+  const lightboxOpenerRef = useRef<HTMLElement | null>(null);
   const emptyNote = isEn ? "Image coming soon" : "Gambar menyusul";
+
+  const openProject = useCallback((project: Project) => {
+    openerRef.current = document.activeElement as HTMLElement | null;
+    setActive(project);
+  }, []);
+
+  const closeProject = useCallback(() => {
+    setActive(null);
+    openerRef.current?.focus();
+    openerRef.current = null;
+  }, []);
 
   const openLightbox = useCallback(
     (project: Project, slideIndex?: number) => {
+      lightboxOpenerRef.current = document.activeElement as HTMLElement | null;
       setLightbox(project);
       if (typeof slideIndex === "number") setLightboxSlideIndex(slideIndex);
     },
     []
   );
+
+  const closeLightbox = useCallback(() => {
+    setLightbox(null);
+    lightboxOpenerRef.current?.focus();
+    lightboxOpenerRef.current = null;
+  }, []);
 
   const filtered = useMemo(
     () =>
@@ -95,14 +116,16 @@ export default function PortfolioPage() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setLightbox(null);
-        setActive(null);
+      if (e.key !== "Escape") return;
+      if (lightbox) {
+        closeLightbox();
+        return;
       }
+      if (active) closeProject();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, []);
+  }, [active, lightbox, closeProject, closeLightbox]);
 
   useEffect(() => {
     document.body.style.overflow = active || lightbox ? "hidden" : "";
@@ -118,6 +141,37 @@ export default function PortfolioPage() {
   useEffect(() => {
     if (lightbox) lightboxCloseRef.current?.focus();
   }, [lightbox]);
+
+  /* Keep Tab inside whichever dialog is on top */
+  useEffect(() => {
+    if (!active && !lightbox) return;
+    const root = lightbox
+      ? lightboxCloseRef.current?.closest(".lightbox-overlay")
+      : modalCloseRef.current?.closest(".modal");
+    if (!root) return;
+
+    const onTab = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const items = Array.from(
+        root.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => el.offsetParent !== null);
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onTab);
+    return () => document.removeEventListener("keydown", onTab);
+  }, [active, lightbox]);
 
   return (
     <main>
@@ -136,13 +190,13 @@ export default function PortfolioPage() {
 
       <section
         className="section section-flush"
-        aria-label="Filter karya"
+        aria-label={t.portfolio.filterLabel}
       >
         <div className="container">
           <div
             className="filter-bar reveal"
             role="group"
-            aria-label="Filter kategori karya"
+            aria-label={t.portfolio.filterLabel}
           >
             {FILTER_IDS.map((id, i) => (
               <button
@@ -160,7 +214,7 @@ export default function PortfolioPage() {
             className="portfolio-grid"
             id="portfolio-grid"
             aria-live="polite"
-            aria-label="Daftar karya"
+            aria-label={t.portfolio.gridLabel}
           >
             {filtered.map((p, idx) => (
               <div
@@ -175,7 +229,7 @@ export default function PortfolioPage() {
                     <div className="project-thumb-overlay">
                       <button
                         className="btn btn-primary btn-sm open-modal"
-                        onClick={() => setActive(p)}
+                        onClick={() => openProject(p)}
                       >
                         <svg
                           width="14"
@@ -217,7 +271,7 @@ export default function PortfolioPage() {
                     <div className="project-actions">
                       <button
                         className="btn btn-ghost btn-sm open-modal"
-                        onClick={() => setActive(p)}
+                        onClick={() => openProject(p)}
                       >
                         {t.portfolio.detail}
                       </button>
@@ -273,7 +327,7 @@ export default function PortfolioPage() {
         aria-labelledby="modal-title"
         aria-hidden={!active}
         onClick={(e) => {
-          if (e.target === e.currentTarget) setActive(null);
+          if (e.target === e.currentTarget) closeProject();
         }}
       >
         <div id="modal" className="modal">
@@ -282,8 +336,8 @@ export default function PortfolioPage() {
               <button
                 ref={modalCloseRef}
                 className="modal-close"
-                aria-label="Tutup modal"
-                onClick={() => setActive(null)}
+                aria-label={t.portfolio.close}
+                onClick={() => closeProject()}
               >
                 ✕
               </button>
@@ -393,7 +447,7 @@ export default function PortfolioPage() {
                   )}
                   <button
                     className="btn btn-ghost btn-sm"
-                    onClick={() => setActive(null)}
+                    onClick={() => closeProject()}
                   >
                     {t.portfolio.close}
                   </button>
@@ -404,16 +458,16 @@ export default function PortfolioPage() {
         </div>
       </div>
 
-      {/* LIGHTBOX — shows the current carousel slide at full size */}
+      {/* LIGHTBOX - shows the current carousel slide at full size */}
       <div
         id="lightbox-overlay"
         className={`lightbox-overlay${lightbox ? " open" : ""}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Tampilan penuh karya"
+        aria-label={t.portfolio.lightboxLabel}
         aria-hidden={!lightbox}
         onClick={(e) => {
-          if (e.target === e.currentTarget) setLightbox(null);
+          if (e.target === e.currentTarget) closeLightbox();
         }}
       >
         {lightbox &&
@@ -430,8 +484,8 @@ export default function PortfolioPage() {
                 <button
                   ref={lightboxCloseRef}
                   className="lightbox-close"
-                  onClick={() => setLightbox(null)}
-                  aria-label="Tutup tampilan penuh"
+                  onClick={() => closeLightbox()}
+                  aria-label={t.portfolio.close}
                 >
                   ✕
                 </button>

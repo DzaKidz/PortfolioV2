@@ -1,10 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
-import Tilt from "@/components/Tilt";
 
 interface Errors {
   name?: string;
@@ -26,6 +25,11 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (sent) successRef.current?.focus();
+  }, [sent]);
 
   const waHref = useMemo(() => {
     const body = [
@@ -367,10 +371,12 @@ export default function ContactPage() {
                   </>
                 ) : (
                   <div
+                    ref={successRef}
                     id="form-success"
                     className="form-success visible"
                     role="status"
                     aria-live="polite"
+                    tabIndex={-1}
                   >
                     <h3>{t.contact.successTitle}</h3>
                     <p>{t.contact.successText}</p>

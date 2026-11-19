@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Atmosphere from "@/components/Atmosphere";
 import { LanguageProvider } from "@/lib/i18n";
 
-// DESIGN.md [detected] type tokens — self-hosted via next/font, no
+// DESIGN.md [detected] type tokens - self-hosted via next/font, no
 // external font requests. DM Serif Display is OFL-licensed; used here as
 // a genre signal (editorial serif display), not copied artwork.
 const sans = Space_Grotesk({
@@ -30,9 +30,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ahmad Dzaky — Visual Creator & Frontend",
+  title: "Ahmad Dzaky | Visual Creator & Frontend",
   description:
-    "Ahmad Dzaky — Graphic Designer, Motion Designer, Video Editor & Frontend Developer. Portofolio karya visual kreatif dan antarmuka web modern.",
+    "Ahmad Dzaky: graphic designer, motion designer, video editor and frontend developer. Portofolio karya visual kreatif dan antarmuka web modern.",
   keywords: [
     "Ahmad Dzaky",
     "portfolio",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Ahmad Dzaky" }],
   openGraph: {
-    title: "Ahmad Dzaky — Visual Creator & Frontend",
+    title: "Ahmad Dzaky | Visual Creator & Frontend",
     description:
       "Portofolio profesional Ahmad Dzaky: Graphic Design, Motion Graphics, Video Editing & Frontend Web.",
     type: "website",

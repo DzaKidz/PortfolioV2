@@ -53,7 +53,7 @@ export const PROJECTS: Project[] = [
     tags: ["Adobe Illustrator", "Photoshop", "Poster Design"],
     role: "Lead Graphic Designer",
     year: "2026",
-    thumb: "/images/Poster Mental Health.jpg",
+    thumb: "/images/Poster Mental Health-960.jpg",
     live: null,
     repo: null,
   },
