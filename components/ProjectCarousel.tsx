@@ -61,7 +61,7 @@ export default function ProjectCarousel({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={src}
-                alt={`${src.split("/").pop()} — slide ${i + 1}`}
+                alt={`Gambar proyek ${i + 1}`}
                 loading="lazy"
                 className="project-carousel__img"
                 onError={(e) => {

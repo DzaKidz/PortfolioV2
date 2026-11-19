@@ -6,36 +6,20 @@ import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
 import Parallax from "@/components/Parallax";
 
-// const TOOLS = [
-//   { icon: "🎨", name: "Illustrator" },
-//   { icon: "🖼️", name: "Photoshop" },
-//   { icon: "🎬", name: "After Effects" },
-//   { icon: "🎞️", name: "Premiere Pro" },
-//   { icon: "🌈", name: "DaVinci Resolve" },
-//   { icon: "🧊", name: "Blender 3D" },
-//   { icon: "📐", name: "Figma" },
-//   { icon: "🌐", name: "HTML5 / CSS3" },
-//   { icon: "🟨", name: "JavaScript" },
-//   { icon: "⚛️", name: "React" },
-//   { icon: "⚡", name: "Tailwind CSS" },
-//   { icon: "🔀", name: "Git" },
-// ];
-
 const TOOLS = [
-  { icon: "", name: "Illustrator" },
-  { icon: "", name: "Photoshop" },
-  { icon: "", name: "After Effects" },
-  { icon: "", name: "Premiere Pro" },
-  { icon: "", name: "DaVinci Resolve" },
-  { icon: "", name: "Blender 3D" },
-  { icon: "", name: "Figma" },
-  { icon: "", name: "HTML5 / CSS3" },
-  { icon: "", name: "JavaScript" },
-  { icon: "", name: "React" },
-  { icon: "", name: "Tailwind CSS" },
-  { icon: "", name: "Git" },
+  "Illustrator",
+  "Photoshop",
+  "After Effects",
+  "Premiere Pro",
+  "DaVinci Resolve",
+  "Blender 3D",
+  "Figma",
+  "HTML5 / CSS3",
+  "JavaScript",
+  "React",
+  "Tailwind CSS",
+  "Git",
 ];
-
 
 const SOFT_CLS = [
   "badge-accent",
@@ -78,6 +62,8 @@ export default function AboutPage() {
                   <img
                     src="/images/avatar.jpg"
                     alt="Ahmad Dzaky"
+                    width={640}
+                    height={640}
                     onError={(e) => {
                       e.currentTarget.style.background =
                         "linear-gradient(135deg,#EEE8D2,#F4CD44)";
@@ -86,7 +72,7 @@ export default function AboutPage() {
                   <div className="about-avatar-glow" aria-hidden="true"></div>
                   <div className="about-info-badge">
                     <p>{t.about.location}</p>
-                    <strong>Jakarta, Indonesia</strong>
+                    <strong>Jawa Tengah, Indonesia</strong>
                     <p className="mt-2">{t.about.status}</p>
                     <strong className="text-green">
                       {t.about.statusValue}
@@ -113,7 +99,7 @@ export default function AboutPage() {
                   {t.about.sendCta}
                 </Link>
                 <a
-                  href="#"
+                  href="mailto:ahmaddzakyms@gmail.com?subject=Permintaan%20CV"
                   className="btn btn-ghost btn-block mt-4"
                 >
                   <svg
@@ -152,10 +138,9 @@ export default function AboutPage() {
                   {t.about.toolsTitle}
                 </h2>
                 <div className="skills-grid">
-                  {TOOLS.map((t) => (
-                    <div key={t.name} className="skill-card" title={t.name}>
-                      <span className="skill-icon">{t.icon}</span>
-                      <span className="skill-name">{t.name}</span>
+                  {TOOLS.map((tool) => (
+                    <div key={tool} className="skill-card" title={tool}>
+                      <span className="skill-name">{tool}</span>
                     </div>
                   ))}
                 </div>

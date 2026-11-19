@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 import { useLanguage } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
@@ -14,6 +14,8 @@ interface Errors {
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const WA_NUMBER = "6285643155260";
+const MAIL = "ahmaddzakyms@gmail.com";
 
 export default function ContactPage() {
   const { t } = useLanguage();
@@ -23,8 +25,26 @@ export default function ContactPage() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Errors>({});
-  const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+
+  const waHref = useMemo(() => {
+    const body = [
+      `Halo Ahmad, saya ${name || "-"}.`,
+      `Email: ${email || "-"}`,
+      `Kebutuhan: ${subject || "-"}`,
+      "",
+      message || "-",
+    ].join("\n");
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(body)}`;
+  }, [name, email, subject, message]);
+
+  const mailHref = useMemo(
+    () =>
+      `mailto:${MAIL}?subject=${encodeURIComponent(
+        subject || "Proyek baru"
+      )}&body=${encodeURIComponent(message)}`,
+    [subject, message]
+  );
 
   const clearError = (key: keyof Errors) =>
     setErrors((prev) => {
@@ -34,7 +54,7 @@ export default function ContactPage() {
       return next;
     });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const nextErrors: Errors = {};
     if (!name.trim() || name.trim().length < 2)
@@ -48,18 +68,8 @@ export default function ContactPage() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    setSending(true);
-    await new Promise((r) => setTimeout(r, 1800));
-    setSending(false);
+    window.open(waHref, "_blank", "noopener,noreferrer");
     setSent(true);
-
-    setTimeout(() => {
-      setName("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
-      setSent(false);
-    }, 6000);
   };
 
   return (
@@ -339,8 +349,6 @@ export default function ContactPage() {
                         type="submit"
                         id="send-btn"
                         className="btn btn-primary form-submit"
-                        disabled={sending}
-                        style={sending ? { opacity: 0.75 } : undefined}
                       >
                         <svg
                           width="16"
@@ -353,7 +361,7 @@ export default function ContactPage() {
                         >
                           <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
                         </svg>
-                        {sending ? t.contact.sending : t.contact.send}
+                        {t.contact.send}
                       </button>
                     </form>
                   </>
@@ -364,14 +372,32 @@ export default function ContactPage() {
                     role="status"
                     aria-live="polite"
                   >
-                    <div className="success-icon" aria-hidden="true">
-                      ✄
-                    </div>
                     <h3>{t.contact.successTitle}</h3>
-                    <p>
-                      {t.contact.successText}
-                    </p>
+                    <p>{t.contact.successText}</p>
+                    <div className="form-success-actions">
+                      <a
+                        href={waHref}
+                        target="_blank"
+                        rel="noopener"
+                        className="btn btn-primary btn-sm"
+                      >
+                        {t.contact.successLink}
+                      </a>
+                      <a
+                        href={mailHref}
+                        className="btn btn-ghost btn-sm"
+                      >
+                        {t.contact.successMail}
+                      </a>
+                    </div>
                     <p className="form-note">{t.contact.successNote}</p>
+                    <button
+                      type="button"
+                      className="btn btn-ghost btn-sm"
+                      onClick={() => setSent(false)}
+                    >
+                      {t.contact.resetCta}
+                    </button>
                   </div>
                 )}
               </div>

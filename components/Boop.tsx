@@ -6,21 +6,18 @@ interface BoopProps {
   children: ReactNode;
   className?: string;
   style?: CSSProperties;
-  label?: string;
-  /** Dipanggil pada tiap klik, di samping animasi boop. */
+  /** Called on every click, alongside the boop animation. */
   onClick?: () => void;
 }
 
 /**
- * Pembungkus interaksi klik: setiap klik memutar ulang animasi
- * "boop" (lompatan + goyangan). Untuk awan, burung, sparkle, dll.
- * Murni dekoratif — pointer-events & fokus tetap milik anak bila ada.
+ * Click-to-replay animation for decorative art. Hidden from assistive tech:
+ * a doodled cloud is not a control, so it takes no tab stop.
  */
 export default function Boop({
   children,
   className = "",
   style,
-  label,
   onClick,
 }: BoopProps) {
   const [nonce, setNonce] = useState(0);
@@ -28,19 +25,10 @@ export default function Boop({
   return (
     <span
       className={`boop ${className}`}
-      role="button"
-      tabIndex={0}
-      aria-label={label ?? "Elemen dekoratif interaktif, klik untuk animasi"}
+      aria-hidden="true"
       onClick={() => {
         setNonce((n) => n + 1);
         onClick?.();
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setNonce((n) => n + 1);
-          onClick?.();
-        }
       }}
       style={{ display: "inline-block", cursor: "pointer", ...style }}
     >

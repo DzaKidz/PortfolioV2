@@ -45,18 +45,18 @@ export interface Dict {
     bioP2b: string;
     bioCta: string;
     workA: string;
+    workB: string;
     workNote: string;
     openCase: string;
     practiceA: string;
     practiceB: string;
     practiceNote: string;
-    tri: Array<{ index: string; title: string; desc: string }>;
+    tri: Array<{ label: string; title: string; desc: string }>;
     playNote: string;
     play: Array<{ title: string; desc: string }>;
     bandTitle: string;
     bandText: string;
     bandCta: string;
-    stats: string[];
     ctaKicker: string;
     ctaA: string;
     ctaB: string;
@@ -129,10 +129,12 @@ export interface Dict {
     messageLabel: string;
     messagePh: string;
     send: string;
-    sending: string;
     successTitle: string;
     successText: string;
     successNote: string;
+    successLink: string;
+    successMail: string;
+    resetCta: string;
     errName: string;
     errEmail: string;
     errSubject: string;
@@ -153,104 +155,104 @@ const id: Dict = {
     work: "Karya",
     about: "Tentang",
     contact: "Kontak",
-    hire: "Hire Me",
+    hire: "Ajak kerja sama",
     menu: "Buka menu",
     langLabel: "Pilih bahasa",
   },
   home: {
-    hello: " Halo — Saya Dzaky ",
+    hello: "Halo, saya Dzaky",
     titleA: "Visuals",
     titleB: "pulse",
-    skySub: "Folio © 2026 · Jawa Tengah, ID · Design · Motion · Code",
-    hint: "Psst — matahari bisa digeser",
+    skySub: "Folio © 2026 · Jawa Tengah, ID · Desain · Motion · Kode",
+    hint: "Psst, matahari bisa digeser",
     rotating: [
-      "brand identities",
-      "motion systems",
-      "video edits",
-      "web interfaces",
+      "identitas brand",
+      "sistem motion",
+      "edit video",
+      "antarmuka web",
     ],
-    deckRole: (w) => `I make ${w} people remember.`,
-    deckOpen: "● Open for projects",
-    deckCta: "Work with me →",
+    deckRole: (w) => `Saya bikin ${w} yang diingat orang.`,
+    deckOpen: "Terbuka untuk proyek",
+    deckCta: "Ajak kerja sama",
     marquee: [
-      "Design",
+      "Desain",
       "Motion",
       "Video",
-      "Code",
-      "Jakarta — ID",
-      "Open for projects",
+      "Kode",
+      "Jawa Tengah, ID",
+      "Terbuka untuk proyek",
     ],
-    bioLead1: "Enam tahun rasa ingin tahu",
+    bioLead1: "Sejak 2022 saya mengerjakan",
     bioRest1:
-      " melintasi desain grafis, motion dan video — dari poster dan identitas brand sampai bumper, reels dan grading sinematik.",
-    bioP2a: "Lalu saya belajar satu hal lagi: ",
-    bioLead2: "menyelesaikannya di browser",
+      " desain grafis, motion, dan video: poster, identitas brand, bumper, reels, sampai grading sinematik.",
+    bioP2a: "Lalu satu hal lagi: ",
+    bioLead2: "merapikannya di browser",
     bioP2b:
-      ". Setiap karya di bawah ini hadir sebagai antarmuka web yang hidup, bukan sekadar file export.",
-    bioCta: "Kenali saya →",
-    workA: "Selected",
+      ". Karya di bawah ini tampil sebagai antarmuka web, bukan sekadar file export.",
+    bioCta: "Kenali saya",
+    workA: "Karya",
+    workB: "pilihan",
     workNote:
-      "A short shelf of favourites — branding, motion and frontend. The full archive lives on the portfolio page.",
-    openCase: "Open case →",
-    practiceA: "A designer",
-    practiceB: "who codes",
+      "Beberapa karya pilihan: branding, motion, dan frontend. Arsip lengkapnya ada di halaman portfolio.",
+    openCase: "Lihat kasus",
+    practiceA: "Desainer",
+    practiceB: "yang ngoding",
     practiceNote:
-      "Three habits, one workflow — from first sketch to shipped page.",
+      "Tiga kebiasaan, satu alur kerja: dari sketsa pertama sampai halaman rilis.",
     tri: [
       {
-        index: "01 — Design",
-        title: "Still frames with intent",
-        desc: "Posters, brand kits and layouts built on grid discipline — type, colour and composition decided before anything moves.",
+        label: "Desain",
+        title: "Frame yang punya maksud",
+        desc: "Poster, brand kit, dan layout yang dibangun di atas grid. Tipe, warna, dan komposisi diputuskan sebelum apa pun bergerak.",
       },
       {
-        index: "02 — Details",
-        title: "Motion is the message",
-        desc: "Bumpers, kinetic type and graded reels: pacing, easing and sound treated as design materials, not decoration.",
+        label: "Detail",
+        title: "Motion adalah pesannya",
+        desc: "Bumper, kinetic type, dan reel hasil grading: pacing, easing, dan suara diperlakukan sebagai material desain.",
       },
       {
-        index: "03 — Code",
-        title: "Finish it in the browser",
-        desc: "The work doesn't stop at export — interfaces prototyped and shipped as responsive, interactive web pages.",
+        label: "Kode",
+        title: "Selesaikan di browser",
+        desc: "Karya tidak berhenti di export. Antarmuka diprototipekan dan dirilis sebagai halaman web yang responsif.",
       },
     ],
     playNote:
-      "Small ongoing experiments in type, grading and interaction — where client work borrows its tricks from.",
+      "Eksperimen kecil yang masih jalan di tipe, grading, dan interaksi. Dari sini karya klien meminjam triknya.",
     play: [
       {
-        title: "Kinetic type studies",
-        desc: "Rhythm & easing drills for title cards.",
+        title: "Studi kinetic type",
+        desc: "Latihan ritme dan easing untuk title card.",
       },
       {
-        title: "Poster grid generator",
-        desc: "12-column experiments, duotone palettes.",
+        title: "Generator grid poster",
+        desc: "Eksperimen 12 kolom dan palet duotone.",
       },
       {
-        title: "Grade & grain lab",
-        desc: "Teal-orange stills, film grain overlays.",
+        title: "Lab grade dan grain",
+        desc: "Still teal-orange dan overlay film grain.",
       },
       {
-        title: "Micro-interaction shelf",
-        desc: "Buttons, toggles & loaders in the browser.",
+        title: "Rak micro-interaction",
+        desc: "Tombol, toggle, dan loader di browser.",
       },
     ],
-    bandTitle: "From stills to systems — one pair of hands.",
+    bandTitle: "Dari still ke sistem, dikerjakan satu orang.",
     bandText:
-      "I trained in multimedia and kept going: branding and editorial design first, then motion and editing, then the frontend needed to present it all properly. Clients get a single collaborator across the whole arc.",
-    bandCta: "More about me →",
-    stats: ["Visual projects", "Practice", "Clients & brands"],
-    ctaKicker: "Got a story to tell?",
-    ctaA: "Grow it",
-    ctaB: "together.",
+      "Saya mulai dari multimedia: branding dan desain editorial, lalu motion dan editing, lalu frontend untuk menyajikannya. Klien berurusan dengan satu orang di sepanjang proses.",
+    bandCta: "Selengkapnya tentang saya",
+    ctaKicker: "Punya cerita untuk disampaikan?",
+    ctaA: "Kerjakan",
+    ctaB: "bersama.",
     ctaText:
-      "A poster, a bumper, a launch film or the page it all lives on — bring the brief, I'll bring the rest.",
-    ctaPrimary: "Work with me →",
-    ctaGhost: "Browse the archive",
+      "Poster, bumper, launch film, atau halaman tempat semuanya tampil. Bawa brief-nya, sisanya saya urus.",
+    ctaPrimary: "Ajak kerja sama",
+    ctaGhost: "Lihat arsip",
   },
   portfolio: {
     kicker: "Portofolio Kreatif",
     titleA: "Galeri",
-    titleB: "Karya & Eksplorasi",
-    desc: "Kumpulan hasil karya terpilih dalam bidang Desain Grafis, Motion Design, Video Editing, dan Frontend Web.",
+    titleB: "karya dan eksplorasi",
+    desc: "Kumpulan karya terpilih di desain grafis, motion design, video editing, dan frontend web.",
     filters: [
       "Semua",
       "Desain Grafis",
@@ -260,138 +262,142 @@ const id: Dict = {
     ],
     collabText: "Punya ide kreatif atau kebutuhan produksi visual?",
     collabA: "Mari",
-    collabB: "Kolaborasikan Karya",
-    collabCta: "Mulai Diskusi →",
-    seeDetail: "Lihat Detail",
+    collabB: "kolaborasi",
+    collabCta: "Mulai diskusi",
+    seeDetail: "Lihat detail",
     detail: "Detail",
-    preview: "Preview →",
-    aboutProject: "Tentang Proyek",
-    tools: "Tools & Software",
-    live: "Live Preview",
-    repo: "GitHub Repo",
+    preview: "Pratinjau",
+    aboutProject: "Tentang proyek",
+    tools: "Tools dan software",
+    live: "Live preview",
+    repo: "Repo GitHub",
     close: "Tutup",
-    expand: "Lihat Lengkap",
+    expand: "Lihat penuh",
     galleryLabel: "Galeri",
   },
   about: {
     kicker: "Tentang Saya",
     titleA: "Kenali",
-    desc: "Visual creator yang berfokus pada Desain Grafis, Motion Graphics, Video Editing, serta implementasi Frontend Web.",
-    profile: "Profil Profesional",
+    desc: "Visual creator yang berfokus pada desain grafis, motion graphics, video editing, dan implementasi frontend web.",
+    profile: "Profil profesional",
     profileTitle: "Halo, saya Ahmad Dzaky",
     bio: [
-      "Saya adalah seorang Graphic Designer, Motion Designer, dan Video Editor dengan antusiasme mendalam pada penceritaan visual dan komunikasi kreatif. Untuk sisi teknis, saya berfokus pada pengembangan Frontend Web untuk menyajikan visual dan interaksi secara nyata di peramban.",
-      "Bagi saya, perpaduan antara desain visual yang kuat, animasi gerak yang ritmis, dan editing video yang berjiwa adalah kunci untuk menciptakan kesan yang mendalam bagi audiens. Kemampuan frontend membantu saya menjembatani visi desain grafis menjadi prototipe web yang responsif dan interaktif.",
-      "Saya berpengalaman menangani branding visual, motion graphics untuk kampanye media sosial, video editing komersial, hingga perancangan landing page kreatif. Terbuka untuk proyek freelance, kolaborasi kreatif agensi/brand, maupun peran visual spesialis.",
+      "Saya graphic designer, motion designer, dan video editor. Sisi teknis saya ada di frontend web: membuat visual dan interaksi itu benar-benar jalan di browser.",
+      "Desain visual yang kuat, motion yang ritmis, dan editing yang punya rasa menentukan kesan yang tertinggal. Kemampuan frontend membuat saya bisa membawa rancangan grafis jadi prototipe web yang responsif.",
+      "Saya mengerjakan branding visual, motion graphics untuk kampanye media sosial, editing video komersial, dan landing page kreatif. Terbuka untuk proyek freelance, kolaborasi agensi atau brand, dan peran visual spesialis.",
     ],
-    toolsLabel: "Tools & Software",
-    toolsTitle: "Perangkat Kreatif & Frontend",
-    softLabel: "Kekuatan & Karakter",
-    softTitle: "Keahlian Non-Teknis",
+    toolsLabel: "Tools dan software",
+    toolsTitle: "Perangkat kreatif dan frontend",
+    softLabel: "Kekuatan dan karakter",
+    softTitle: "Keahlian non-teknis",
     soft: [
-      " Visual Storytelling",
-      " Pacing & Video Rhythm",
-      " Sense of Color & Typography",
-      " Kolaborasi Tim Kreatif",
-      " Problem Solving Visual",
-      " Ketepatan Deadline",
-      " Adaptasi Cepat Terhadap Trend",
+      "Storytelling visual",
+      "Pacing dan ritme video",
+      "Sense of color dan tipografi",
+      "Kolaborasi tim kreatif",
+      "Problem solving visual",
+      "Ketepatan deadline",
+      "Adaptasi cepat",
     ],
     expLabel: "Pengalaman",
-    expTitle: "Riwayat Karier Visual",
+    expTitle: "Riwayat kerja visual",
     eduLabel: "Pendidikan",
-    eduTitle: "Riwayat Pendidikan",
-    location: "📍 Lokasi",
-    status: "💼 Status",
-    statusValue: "Open for Creative Projects",
-    sendCta: "Kirim Pesan",
-    downloadCta: "Unduh Portofolio PDF",
+    eduTitle: "Riwayat pendidikan",
+    location: "Lokasi",
+    status: "Status",
+    statusValue: "Terbuka untuk proyek kreatif",
+    sendCta: "Kirim pesan",
+    downloadCta: "Minta CV lewat email",
     experiences: [
       {
-        date: "Jan 2024 — Sekarang",
+        date: "Jan 2024 - sekarang",
         title: "Motion Designer & Video Editor",
         org: "Studio Kreatif Visual",
-        desc: "Memproduksi animasi promosi produk (2D & 3D), editing video promosi komersial untuk brand, serta merancang aset visual grafis media sosial dengan engagement tinggi.",
+        desc: "Memproduksi animasi promosi produk 2D dan 3D, editing video promosi komersial untuk brand, serta aset visual grafis media sosial.",
       },
       {
-        date: "Jun 2023 — Des 2023",
+        date: "Jun 2023 - Des 2023",
         title: "Graphic Designer & Frontend Enthusiast (Freelance)",
-        org: "Berbagai Klien & Brand UMKM",
-        desc: "Mengerjakan pembuatan identitas visual (logo & brand kit), poster pameran, video teaser promosi, serta mengembangkan website portofolio interaktif berbasis HTML/CSS/JS dan React.",
+        org: "Berbagai klien dan brand UMKM",
+        desc: "Identitas visual (logo dan brand kit), poster pameran, video teaser promosi, serta website portofolio interaktif berbasis HTML/CSS/JS dan React.",
       },
       {
-        date: "Feb 2023 — Mei 2023",
+        date: "Feb 2023 - Mei 2023",
         title: "Creative Visual Intern",
         org: "Media Digital Kreatif",
-        desc: "Membantu perancangan aset grafis harian, pembuatan motion bumper logo, dan editing konten video pendek (Reels/TikTok) untuk kebutuhan promosi digital.",
+        desc: "Aset grafis harian, motion bumper logo, dan editing video pendek (Reels/TikTok) untuk promosi digital.",
       },
     ],
     educations: [
       {
-        date: "2022 — 2025",
+        date: "2022 - 2025",
         title: "Jurusan Multimedia",
         org: "MAN 1 Karanganyar",
-        desc: "Fokus pada multimedia, komunikasi visual, dan rekayasa antarmuka web. Aktif di divisi Desain Grafis & Multimedia organisasi kampus.",
+        desc: "Fokus pada multimedia dan komunikasi visual. Aktif di divisi desain grafis dan multimedia sekolah.",
       },
       {
-        date: "2025 — NOW",
+        date: "2025 - sekarang",
         title: "S1 Sistem Informasi",
         org: "Universitas Bina Sarana Informatika",
-        desc: "Fokus pada multimedia, komunikasi visual, dan rekayasa antarmuka web. Aktif di divisi Desain Grafis & Multimedia organisasi kampus.",
+        desc: "Melanjutkan studi di sistem informasi, sementara desain dan multimedia tetap jadi praktik harian.",
       },
     ],
   },
   contact: {
-    kicker: "Kontak & Kolaborasi",
+    kicker: "Kontak dan kolaborasi",
     titleA: "Mari",
-    titleB: "Terhubung",
+    titleB: "terhubung",
     desc: "Punya proyek desain grafis, kebutuhan animasi gerak, editing video, atau website frontend? Saya siap berkolaborasi.",
-    infoTitle: "Hubungi Langsung",
+    infoTitle: "Hubungi langsung",
     infoTextA:
-      "Saya terbuka untuk mendiskusikan brief proyek kreatif baru, kolaborasi agensi/brand, maupun tawaran kerja. Respons biasanya dalam ",
+      "Saya terbuka untuk brief proyek kreatif baru, kolaborasi agensi atau brand, maupun tawaran kerja. Biasanya saya membalas dalam ",
     infoTextB: "24 jam",
-    findMe: "Temukan Saya Di",
-    formTitle: "Kirim Pesan",
-    formSub: "Isi formulir di bawah dan saya akan menghubungi Anda secepatnya.",
-    nameLabel: "Nama Lengkap",
+    findMe: "Temukan saya di",
+    formTitle: "Kirim pesan",
+    formSub:
+      "Isi formulir, lalu kirim lewat WhatsApp. Pesan belum terkirim sampai kamu menekan kirim di WhatsApp.",
+    nameLabel: "Nama lengkap",
     namePh: "Nama Anda / Brand",
-    emailLabel: "Alamat Email",
+    emailLabel: "Alamat email",
     emailPh: "email@example.com",
-    subjectLabel: "Subjek / Jenis Kebutuhan",
-    subjectPh: "Proyek Motion Graphics / Desain / Web...",
-    messageLabel: "Detail Pesan / Kebutuhan",
+    subjectLabel: "Subjek / jenis kebutuhan",
+    subjectPh: "Proyek motion graphics / desain / web",
+    messageLabel: "Detail pesan / kebutuhan",
     messagePh:
       "Halo Ahmad, kami membutuhkan jasa desain / motion / video / frontend web untuk...",
-    send: "Kirim Pesan",
-    sending: "Mengirim...",
-    successTitle: "Pesan Terkirim!",
+    send: "Kirim lewat WhatsApp",
+    successTitle: "WhatsApp dibuka",
     successText:
-      "Terima kasih sudah menghubungi. Saya akan segera membalas pesan Anda dalam waktu dekat.",
-    successNote: "Form akan direset otomatis...",
+      "Pesan sudah disiapkan di WhatsApp. Tekan kirim di sana supaya saya menerimanya.",
+    successNote:
+      "Tab tidak terbuka? Buka tautannya lewat tombol di bawah.",
+    successLink: "Buka WhatsApp",
+    successMail: "Kirim lewat email",
+    resetCta: "Tulis pesan lain",
     errName: "Nama minimal 2 karakter.",
     errEmail: "Masukkan alamat email yang valid.",
     errSubject: "Subjek minimal 3 karakter.",
     errMessage: "Pesan minimal 10 karakter.",
-    faqTitle: "Pertanyaan Umum",
+    faqTitle: "Pertanyaan umum",
     faq: [
       {
-        q: "⏱️ Berapa estimasi waktu pengerjaan?",
-        a: "Tergantung ruang lingkup. Desain grafis / poster 2–4 hari, video editing / motion reels 4–7 hari, dan web frontend 1–2 minggu.",
+        q: "Berapa estimasi waktu pengerjaan?",
+        a: "Tergantung ruang lingkup. Desain grafis atau poster 2-4 hari, video editing dan motion reels 4-7 hari, web frontend 1-2 minggu.",
       },
       {
-        q: "🎨 Bagaimana proses revisi karya?",
-        a: "Saya menyediakan proses bertahap: eksplorasi konsep/moodboard, draft pertama, hingga 2-3 kali putaran revisi untuk hasil terbaik.",
+        q: "Bagaimana proses revisi karya?",
+        a: "Bertahap: eksplorasi konsep dan moodboard, draft pertama, lalu 2-3 putaran revisi.",
       },
       {
-        q: "📁 Format file akhir apa saja yang diberikan?",
-        a: "File siap pakai (MP4 4K/FHD, PNG/JPG/SVG, PDF) serta source file (AI, PSD, AE, PR, atau repository kode Frontend) sesuai kesepakatan.",
+        q: "Format file akhir apa saja yang diberikan?",
+        a: "File siap pakai (MP4 4K/FHD, PNG/JPG/SVG, PDF) dan source file (AI, PSD, AE, PR, atau repository kode frontend) sesuai kesepakatan.",
       },
     ],
   },
   footer: {
-    desc: "Graphic Designer, Motion Designer & Video Editor yang juga mengeksplorasi antarmuka Frontend Web modern.",
+    desc: "Graphic designer, motion designer, dan video editor yang juga mengerjakan antarmuka frontend web.",
     nav: "Navigasi",
-    social: "Sosial Media",
+    social: "Sosial media",
   },
 };
 
@@ -401,16 +407,16 @@ const en: Dict = {
     work: "Work",
     about: "About",
     contact: "Contact",
-    hire: "Hire Me",
+    hire: "Start a project",
     menu: "Open menu",
     langLabel: "Choose language",
   },
   home: {
-    hello: " Hello — I'm Dzaky ",
+    hello: "Hi, I'm Dzaky",
     titleA: "Visuals",
     titleB: "pulse",
-    skySub: "Folio © 2026 · Jakarta, ID · Design · Motion · Code",
-    hint: "Psst — the sun is draggable",
+    skySub: "Folio © 2026 · Central Java, ID · Design · Motion · Code",
+    hint: "Psst, the sun is draggable",
     rotating: [
       "brand identities",
       "motion systems",
@@ -418,151 +424,157 @@ const en: Dict = {
       "web interfaces",
     ],
     deckRole: (w) => `I make ${w} people remember.`,
-    deckOpen: "● Open for projects",
-    deckCta: "Work with me →",
+    deckOpen: "Open for projects",
+    deckCta: "Start a project",
     marquee: [
       "Design",
       "Motion",
       "Video",
       "Code",
-      "Jakarta — ID",
+      "Central Java, ID",
       "Open for projects",
     ],
-    bioLead1: "Six years of curiosity",
+    bioLead1: "Since 2022 I've worked on",
     bioRest1:
-      " across graphic design, motion and video — from posters and brand identities to bumpers, reels and cinematic grading.",
-    bioP2a: "Then I learned one more thing: ",
+      " graphic design, motion and video: posters, brand identities, bumpers, reels and cinematic grading.",
+    bioP2a: "Then one more thing: ",
     bioLead2: "finish it in the browser",
     bioP2b:
-      ". Everything below arrives as a living web interface, not just an exported file.",
-    bioCta: "More about me →",
+      ". Everything below arrives as a web interface, not just an exported file.",
+    bioCta: "More about me",
     workA: "Selected",
+    workB: "work",
     workNote:
-      "A short shelf of favourites — branding, motion and frontend. The full archive lives on the portfolio page.",
-    openCase: "Open case →",
+      "A short shelf of favourites: branding, motion and frontend. The full archive lives on the portfolio page.",
+    openCase: "Open case",
     practiceA: "A designer",
     practiceB: "who codes",
     practiceNote:
-      "Three habits, one workflow — from first sketch to shipped page.",
+      "Three habits, one workflow: from first sketch to shipped page.",
     tri: [
       {
-        index: "01 — Design",
-        title: "Still frames with intent",
-        desc: "Posters, brand kits and layouts built on grid discipline — type, colour and composition decided before anything moves.",
+        label: "Design",
+        title: "Frames with intent",
+        desc: "Posters, brand kits and layouts built on grid discipline. Type, colour and composition decided before anything moves.",
       },
       {
-        index: "02 — Details",
+        label: "Detail",
         title: "Motion is the message",
-        desc: "Bumpers, kinetic type and graded reels: pacing, easing and sound treated as design materials, not decoration.",
+        desc: "Bumpers, kinetic type and graded reels: pacing, easing and sound treated as design materials.",
       },
       {
-        index: "03 — Code",
+        label: "Code",
         title: "Finish it in the browser",
-        desc: "The work doesn't stop at export — interfaces prototyped and shipped as responsive, interactive web pages.",
+        desc: "The work doesn't stop at export. Interfaces prototyped and shipped as responsive web pages.",
       },
     ],
     playNote:
-      "Small ongoing experiments in type, grading and interaction — where client work borrows its tricks from.",
+      "Small ongoing experiments in type, grading and interaction. Client work borrows its tricks from here.",
     play: [
       {
         title: "Kinetic type studies",
-        desc: "Rhythm & easing drills for title cards.",
+        desc: "Rhythm and easing drills for title cards.",
       },
       {
         title: "Poster grid generator",
-        desc: "12-column experiments, duotone palettes.",
+        desc: "12-column experiments and duotone palettes.",
       },
       {
-        title: "Grade & grain lab",
-        desc: "Teal-orange stills, film grain overlays.",
+        title: "Grade and grain lab",
+        desc: "Teal-orange stills and film-grain overlays.",
       },
       {
         title: "Micro-interaction shelf",
-        desc: "Buttons, toggles & loaders in the browser.",
+        desc: "Buttons, toggles and loaders in the browser.",
       },
     ],
-    bandTitle: "From stills to systems — one pair of hands.",
+    bandTitle: "From stills to systems, one pair of hands.",
     bandText:
-      "I trained in multimedia and kept going: branding and editorial design first, then motion and editing, then the frontend needed to present it all properly. Clients get a single collaborator across the whole arc.",
-    bandCta: "More about me →",
-    stats: ["Visual projects", "Practice", "Clients & brands"],
+      "I started in multimedia: branding and editorial design, then motion and editing, then the frontend needed to present it. Clients get one collaborator across the whole arc.",
+    bandCta: "More about me",
     ctaKicker: "Got a story to tell?",
-    ctaA: "Grow it",
+    ctaA: "Build it",
     ctaB: "together.",
     ctaText:
-      "A poster, a bumper, a launch film or the page it all lives on — bring the brief, I'll bring the rest.",
-    ctaPrimary: "Work with me →",
+      "A poster, a bumper, a launch film or the page it all lives on. Bring the brief, I'll bring the rest.",
+    ctaPrimary: "Start a project",
     ctaGhost: "Browse the archive",
   },
   portfolio: {
     kicker: "Creative Portfolio",
     titleA: "Gallery of",
-    titleB: "Work & Exploration",
-    desc: "A curated set of selected works in Graphic Design, Motion Design, Video Editing and Frontend Web.",
-    filters: ["All", "Graphic Design", "Motion Design", "Video Editing", "Frontend Web"],
+    titleB: "work and exploration",
+    desc: "A curated set of works in graphic design, motion design, video editing and frontend web.",
+    filters: [
+      "All",
+      "Graphic Design",
+      "Motion Design",
+      "Video Editing",
+      "Frontend Web",
+    ],
     collabText: "Have a creative idea or a visual production need?",
     collabA: "Let's",
-    collabB: "Collaborate",
-    collabCta: "Start a discussion →",
-    seeDetail: "View Detail",
+    collabB: "collaborate",
+    collabCta: "Start a discussion",
+    seeDetail: "View detail",
     detail: "Detail",
-    preview: "Preview →",
-    aboutProject: "About the Project",
-    tools: "Tools & Software",
-    live: "Live Preview",
-    repo: "GitHub Repo",
+    preview: "Preview",
+    aboutProject: "About the project",
+    tools: "Tools and software",
+    live: "Live preview",
+    repo: "GitHub repo",
     close: "Close",
-    expand: "View Full",
+    expand: "View full",
     galleryLabel: "Gallery",
   },
   about: {
     kicker: "About Me",
     titleA: "Meet",
-    desc: "A visual creator focused on Graphic Design, Motion Graphics, Video Editing and Frontend Web implementation.",
-    profile: "Professional Profile",
+    desc: "A visual creator focused on graphic design, motion graphics, video editing and frontend web implementation.",
+    profile: "Professional profile",
     profileTitle: "Hi, I'm Ahmad Dzaky",
     bio: [
-      "I'm a Graphic Designer, Motion Designer and Video Editor with a deep enthusiasm for visual storytelling and creative communication. On the technical side, I focus on Frontend Web development to present visuals and interactions live in the browser.",
-      "To me, the blend of strong visual design, rhythmic motion and soulful video editing is the key to leaving a lasting impression. Frontend skills help me bridge graphic design vision into responsive, interactive web prototypes.",
-      "I'm experienced in visual branding, motion graphics for social campaigns, commercial video editing and creative landing pages. Open to freelance projects, agency/brand collaboration and specialist visual roles.",
+      "I'm a graphic designer, motion designer and video editor. The technical side sits in frontend web: making those visuals and interactions actually run in the browser.",
+      "Strong visual design, rhythmic motion and editing with feel decide whether the impression sticks. Frontend skills let me carry a graphic direction into a responsive web prototype.",
+      "I work on visual branding, motion graphics for social campaigns, commercial video editing and creative landing pages. Open to freelance projects, agency or brand collaboration, and specialist visual roles.",
     ],
-    toolsLabel: "Tools & Software",
-    toolsTitle: "Creative & Frontend Toolkit",
-    softLabel: "Strengths & Character",
-    softTitle: "Non-Technical Skills",
+    toolsLabel: "Tools and software",
+    toolsTitle: "Creative and frontend toolkit",
+    softLabel: "Strengths and character",
+    softTitle: "Non-technical skills",
     soft: [
-      " Visual Storytelling",
-      " Pacing & Video Rhythm",
-      " Sense of Color & Typography",
-      " Creative Team Collaboration",
-      " Visual Problem Solving",
-      " Deadline Reliability",
-      " Fast Trend Adaptation",
+      "Visual storytelling",
+      "Pacing and video rhythm",
+      "Sense of color and typography",
+      "Creative team collaboration",
+      "Visual problem solving",
+      "Deadline reliability",
+      "Fast adaptation",
     ],
     expLabel: "Experience",
-    expTitle: "Visual Career History",
+    expTitle: "Visual work history",
     eduLabel: "Education",
-    eduTitle: "Education History",
-    location: "📍 Location",
-    status: "💼 Status",
-    statusValue: "Open for Creative Projects",
-    sendCta: "Send Message",
-    downloadCta: "Download Portfolio PDF",
+    eduTitle: "Education history",
+    location: "Location",
+    status: "Status",
+    statusValue: "Open for creative projects",
+    sendCta: "Send a message",
+    downloadCta: "Request CV by email",
     experiences: [
       {
-        date: "Jan 2024 — Present",
+        date: "Jan 2024 - present",
         title: "Motion Designer & Video Editor",
         org: "Visual Creative Studio",
-        desc: "Producing product animations (2D & 3D), commercial promo edits for brands, and high-engagement social media graphic assets.",
+        desc: "Producing 2D and 3D product animations, commercial promo edits for brands, and social media graphic assets.",
       },
       {
-        date: "Jun 2023 — Dec 2023",
+        date: "Jun 2023 - Dec 2023",
         title: "Graphic Designer & Frontend Enthusiast (Freelance)",
-        org: "Various SME Clients & Brands",
-        desc: "Visual identity work (logos & brand kits), exhibition posters, promo video teasers, and interactive portfolio websites built with HTML/CSS/JS and React.",
+        org: "Various SME clients and brands",
+        desc: "Visual identity work (logos and brand kits), exhibition posters, promo video teasers, and interactive portfolio sites built with HTML/CSS/JS and React.",
       },
       {
-        date: "Feb 2023 — May 2023",
+        date: "Feb 2023 - May 2023",
         title: "Creative Visual Intern",
         org: "Creative Digital Media",
         desc: "Daily graphic assets, logo motion bumpers, and short-form video edits (Reels/TikTok) for digital promotion.",
@@ -570,70 +582,73 @@ const en: Dict = {
     ],
     educations: [
       {
-        date: "2022 — 2025",
+        date: "2022 - 2025",
         title: "Multimedia Major",
         org: "MAN 1 Karanganyar",
-        desc: "Focused on multimedia, visual communication and web interface engineering. Active in the campus Graphic Design & Multimedia division.",
+        desc: "Focused on multimedia and visual communication. Active in the school's graphic design and multimedia division.",
       },
       {
-        date: "2025 — NOW",
+        date: "2025 - present",
         title: "BSc Information Systems",
         org: "Universitas Bina Sarana Informatika",
-        desc: "Focused on multimedia, visual communication and web interface engineering. Active in the campus Graphic Design & Multimedia division.",
+        desc: "Continuing in information systems while design and multimedia remain daily practice.",
       },
     ],
   },
   contact: {
-    kicker: "Contact & Collaboration",
+    kicker: "Contact and collaboration",
     titleA: "Let's",
-    titleB: "Connect",
-    desc: "Have a graphic design project, motion graphics need, video edit or frontend website in mind? I'm ready to collaborate.",
-    infoTitle: "Reach Me Directly",
+    titleB: "connect",
+    desc: "Have a graphic design project, a motion graphics need, a video edit or a frontend site in mind? I'm ready to collaborate.",
+    infoTitle: "Reach me directly",
     infoTextA:
-      "I'm open to discussing new creative project briefs, agency/brand collaboration or job offers. I usually respond within ",
+      "I'm open to new creative briefs, agency or brand collaboration, and job offers. I usually reply within ",
     infoTextB: "24 hours",
-    findMe: "Find Me On",
-    formTitle: "Send a Message",
-    formSub: "Fill in the form below and I'll get back to you shortly.",
-    nameLabel: "Full Name",
-    namePh: "Your Name / Brand",
-    emailLabel: "Email Address",
+    findMe: "Find me on",
+    formTitle: "Send a message",
+    formSub:
+      "Fill in the form, then send it through WhatsApp. Nothing is sent until you press send in WhatsApp.",
+    nameLabel: "Full name",
+    namePh: "Your name / brand",
+    emailLabel: "Email address",
     emailPh: "email@example.com",
-    subjectLabel: "Subject / Type of Need",
-    subjectPh: "Motion Graphics / Design / Web project...",
-    messageLabel: "Message Details",
+    subjectLabel: "Subject / type of need",
+    subjectPh: "Motion graphics / design / web project",
+    messageLabel: "Message details",
     messagePh:
       "Hi Ahmad, we need design / motion / video / frontend web work for...",
-    send: "Send Message",
-    sending: "Sending...",
-    successTitle: "Message Sent!",
+    send: "Send via WhatsApp",
+    successTitle: "WhatsApp opened",
     successText:
-      "Thanks for reaching out. I'll reply to your message very soon.",
-    successNote: "Form will reset automatically...",
+      "The message is ready in WhatsApp. Press send there so I receive it.",
+    successNote: "Tab didn't open? Use the buttons below.",
+    successLink: "Open WhatsApp",
+    successMail: "Send via email",
+    resetCta: "Write another message",
     errName: "Name needs at least 2 characters.",
     errEmail: "Please enter a valid email address.",
     errSubject: "Subject needs at least 3 characters.",
     errMessage: "Message needs at least 10 characters.",
-    faqTitle: "Frequently Asked",
+    faqTitle: "Frequently asked",
     faq: [
       {
-        q: "⏱️ How long does a project take?",
-        a: "Depends on scope. Graphic design / posters 2–4 days, video editing / motion reels 4–7 days, and frontend web 1–2 weeks.",
+        q: "How long does a project take?",
+        a: "Depends on scope. Graphic design or posters 2-4 days, video editing and motion reels 4-7 days, frontend web 1-2 weeks.",
       },
       {
-        q: "🎨 How do revisions work?",
-        a: "A staged process: concept/moodboard exploration, first draft, then 2–3 revision rounds for the best result.",
+        q: "How do revisions work?",
+        a: "In stages: concept and moodboard exploration, first draft, then 2-3 revision rounds.",
       },
       {
-        q: "📁 What final files do I receive?",
-        a: "Ready-to-use files (MP4 4K/FHD, PNG/JPG/SVG, PDF) plus source files (AI, PSD, AE, PR, or the Frontend code repository) as agreed.",
+        q: "What final files do I receive?",
+        a: "Ready-to-use files (MP4 4K/FHD, PNG/JPG/SVG, PDF) and source files (AI, PSD, AE, PR, or the frontend code repository) as agreed.",
       },
     ],
   },
   footer: {
-    desc: "Graphic Designer, Motion Designer & Video Editor also exploring modern Frontend Web interfaces.",
+    desc: "Graphic designer, motion designer and video editor also working on frontend web interfaces.",
     nav: "Navigation",
-    social: "Social Media",
+    social: "Social media",
   },
 };
 
@@ -651,16 +666,20 @@ const LangContext = createContext<LangContextValue>({
 
 const STORAGE_KEY = "lang";
 
+function readStoredLang(): Lang {
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "id" || stored === "en") return stored;
+  } catch {
+    /* localStorage can be blocked; fall through to default */
+  }
+  return "id";
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() => {
     if (typeof window === "undefined") return "id";
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (stored === "id" || stored === "en") return stored;
-    } catch {
-      /* abaikan */
-    }
-    return "id";
+    return readStoredLang();
   });
 
   useEffect(() => {
@@ -672,7 +691,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     try {
       window.localStorage.setItem(STORAGE_KEY, l);
     } catch {
-      /* abaikan */
+      /* localStorage can be blocked; the UI still switches for this session */
     }
     document.documentElement.lang = l;
   };

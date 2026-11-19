@@ -50,7 +50,6 @@ export default function Home() {
 
   return (
     <main>
-      {/* ============ SKY HERO — panel langit + deck bar ============ */}
       <div className={styles.skyWrap}>
         <section className={styles.sky} aria-label="Perkenalan">
           <div className={styles.skyStars} aria-hidden="true">
@@ -58,49 +57,49 @@ export default function Home() {
           </div>
           <SkySun className={styles.skySun} />
           <Parallax speed={0.14} className={`${styles.skyCloud} ${styles.skyCloudA}`}>
-            <Boop style={{ width: "100%" }} label="Awan — klik untuk animasi">
+            <Boop style={{ width: "100%" }}>
               <span className={`${styles.skyFloat} ${styles.sf1}`}>
                 <Cloud style={{ width: "100%", height: "auto" }} />
               </span>
             </Boop>
           </Parallax>
           <Parallax speed={-0.06} className={`${styles.skyCloud} ${styles.skyCloudB}`}>
-            <Boop style={{ width: "100%" }} label="Awan — klik untuk animasi">
+            <Boop style={{ width: "100%" }}>
               <span className={`${styles.skyFloat} ${styles.sf2}`}>
                 <Cloud style={{ width: "100%", height: "auto" }} />
               </span>
             </Boop>
           </Parallax>
           <Parallax speed={0.2} className={`${styles.skyCloud} ${styles.skyCloudC}`}>
-            <Boop style={{ width: "100%" }} label="Awan — klik untuk animasi">
+            <Boop style={{ width: "100%" }}>
               <span className={`${styles.skyFloat} ${styles.sf3}`}>
                 <Cloud style={{ width: "100%", height: "auto" }} />
               </span>
             </Boop>
           </Parallax>
           <Parallax speed={-0.16} className={`${styles.skyBirds} ${styles.skyBirdsA}`}>
-            <Boop style={{ width: "100%" }} label="Burung — klik untuk animasi">
+            <Boop style={{ width: "100%" }}>
               <span className={`${styles.skyFloat} ${styles.sf2}`}>
                 <Bird style={{ width: "100%", height: "auto" }} />
               </span>
             </Boop>
           </Parallax>
           <Parallax speed={0.08} className={`${styles.skyBirds} ${styles.skyBirdsB}`}>
-            <Boop style={{ width: "100%" }} label="Burung — klik untuk animasi">
+            <Boop style={{ width: "100%" }}>
               <span className={`${styles.skyFloat} ${styles.sf4}`}>
                 <Bird style={{ width: "100%", height: "auto" }} />
               </span>
             </Boop>
           </Parallax>
           <Parallax speed={0.1} className={styles.skyBalloon}>
-            <Boop style={{ width: "100%" }} label="Balon udara — klik untuk animasi">
+            <Boop style={{ width: "100%" }}>
               <span className={`${styles.skyFloat} ${styles.sf5}`}>
                 <Balloon style={{ width: "100%", height: "auto" }} />
               </span>
             </Boop>
           </Parallax>
           <Parallax speed={-0.04} className={styles.skyPlanet}>
-            <Boop style={{ width: "100%" }} label="Planet — klik untuk animasi">
+            <Boop style={{ width: "100%" }}>
               <span className={`${styles.skyFloat} ${styles.sf4}`}>
                 <Planet style={{ width: "100%", height: "auto" }} />
               </span>
@@ -167,7 +166,7 @@ export default function Home() {
         <div className={styles.deckWrap}>
           <div className={`${styles.deckBar} reveal reveal-delay-2`}>
             <p className={styles.deckText} aria-live="polite">
-              <strong>Ahmad Dzaky</strong> — {t.home.deckRole(word)}
+              <strong>Ahmad Dzaky</strong>, {t.home.deckRole(word)}
               <span className="text-green"> {t.home.deckOpen}</span>
             </p>
             <Link
@@ -181,7 +180,6 @@ export default function Home() {
 
       <div className={styles.skyCover}>
 
-      {/* ============ BIO + FLIGHT PATH ============ */}
       <section className={styles.bioSection} aria-label="Tentang singkat">
         <div className="container">
           <div className={styles.bioWrap}>
@@ -231,7 +229,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ MARQUEE ============ */}
       <div className={styles.marquee} aria-hidden="true">
         <div className={styles.marqueeTrack}>
           {[0, 1].map((copy) => (
@@ -246,7 +243,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ============ SELECTED WORK ============ */}
       <section
         className={styles.block}
         id="selected-work"
@@ -257,7 +253,7 @@ export default function Home() {
             <h2 className={`${styles.headTitle} reveal`} id="work-heading">
               {t.home.workA}
               <br />
-              work<span style={{ color: "var(--clr-accent-2)" }}>.</span>
+              {t.home.workB}<span className="accent-dot">.</span>
             </h2>
             <p className={`${styles.headNote} reveal reveal-delay-1`}>
               {t.home.workNote}
@@ -271,13 +267,20 @@ export default function Home() {
                 className={`${styles.workCard} reveal reveal-delay-${i + 1}`}
               >
                 <div className={styles.thumb}>
-                  {isVideoThumb(p.thumb) ? (
+                  {p.thumb === null ? (
+                    <div className={styles.thumbEmpty}>
+                      <span>{isEn ? p.categoryLabelEn : p.categoryLabel}</span>
+                      <strong>{p.title}</strong>
+                      <em>{isEn ? "Image coming soon" : "Gambar menyusul"}</em>
+                    </div>
+                  ) : isVideoThumb(p.thumb) ? (
                     <video
                       src={p.thumb}
                       muted
                       loop
                       autoPlay
                       playsInline
+                      preload="metadata"
                       aria-label={p.title}
                     />
                   ) : (
@@ -304,14 +307,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ TRIPTYCH — designer-who-codes posture ============ */}
       <section className={styles.block} aria-labelledby="practice-heading">
         <div className="container">
           <div className={styles.headRow}>
             <h2 className={`${styles.headTitle} reveal`} id="practice-heading">
               {t.home.practiceA}
               <br />
-              {t.home.practiceB}<span style={{ color: "var(--clr-accent-2)" }}>.</span>
+              {t.home.practiceB}<span className="accent-dot">.</span>
             </h2>
             <p className={`${styles.headNote} reveal reveal-delay-1`}>
               {t.home.practiceNote}
@@ -328,7 +330,7 @@ export default function Home() {
                   ` reveal${i > 0 ? ` reveal-delay-${i}` : ""}`
                 }
               >
-                <span className={styles.triIndex}>{card.index}</span>
+                <span className={styles.triIndex}>{card.label}</span>
                 <h3 className={styles.triTitle}>{card.title}</h3>
                 <p className={styles.triText}>{card.desc}</p>
               </div>
@@ -337,12 +339,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ PLAYGROUND ============ */}
       <section className={styles.block} aria-labelledby="playground-heading">
         <div className="container">
           <div className={styles.headRow}>
             <h2 className={`${styles.headTitle} reveal`} id="playground-heading">
-              Playground<span style={{ color: "var(--clr-accent-2)" }}>.</span>
+              Playground<span className="accent-dot">.</span>
             </h2>
             <p className={`${styles.headNote} reveal reveal-delay-1`}>
               {t.home.playNote}
@@ -379,7 +380,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ ABOUT BAND ============ */}
       <section className={styles.band} aria-labelledby="about-teaser">
         <div className="container">
           <div className={`${styles.bandGrid} ${styles.block}`}>
@@ -396,35 +396,20 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className={`${styles.statRow} reveal reveal-delay-1`}>
-              <div>
-                <span className={styles.statNum}>35+</span>
-                <span className={styles.statLabel}>{t.home.stats[0]}</span>
-              </div>
-              <div>
-                <span className={styles.statNum}>3yr</span>
-                <span className={styles.statLabel}>{t.home.stats[1]}</span>
-              </div>
-              <div>
-                <span className={styles.statNum}>20+</span>
-                <span className={styles.statLabel}>{t.home.stats[2]}</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ============ CTA — "Grow together?" posture, original copy ============ */}
       <section className={styles.block} aria-labelledby="cta-heading">
         <div className="container">
           <div className={`${styles.ctaPanel} reveal`}>
             <Parallax speed={-0.08} className={styles.ctaStarA}>
-              <Boop label="Bintang — klik untuk animasi">
+              <Boop>
                 <Sparkle style={{ width: 40, height: 40 }} />
               </Boop>
             </Parallax>
             <Parallax speed={0.1} className={styles.ctaStarB}>
-              <Boop label="Bintang — klik untuk animasi">
+              <Boop>
                 <Sparkle style={{ width: 26, height: 26 }} />
               </Boop>
             </Parallax>

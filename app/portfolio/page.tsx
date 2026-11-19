@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   PROJECTS,
   badgeClassFor,
@@ -22,11 +22,23 @@ function ThumbMedia({
   project,
   zoomable = false,
   onZoom,
+  emptyNote,
 }: {
   project: Project;
   zoomable?: boolean;
   onZoom?: () => void;
+  emptyNote: string;
 }) {
+  if (project.thumb === null) {
+    return (
+      <div className="project-thumb-empty">
+        <span>{project.categoryLabel}</span>
+        <strong>{project.title}</strong>
+        <em>{emptyNote}</em>
+      </div>
+    );
+  }
+
   if (isVideoThumb(project.thumb)) {
     return (
       <video
@@ -59,6 +71,9 @@ export default function PortfolioPage() {
   const [active, setActive] = useState<Project | null>(null);
   const [lightbox, setLightbox] = useState<Project | null>(null);
   const [lightboxSlideIndex, setLightboxSlideIndex] = useState(0);
+  const modalCloseRef = useRef<HTMLButtonElement>(null);
+  const lightboxCloseRef = useRef<HTMLButtonElement>(null);
+  const emptyNote = isEn ? "Image coming soon" : "Gambar menyusul";
 
   const openLightbox = useCallback(
     (project: Project, slideIndex?: number) => {
@@ -95,6 +110,14 @@ export default function PortfolioPage() {
       document.body.style.overflow = "";
     };
   }, [active, lightbox]);
+
+  useEffect(() => {
+    if (active) modalCloseRef.current?.focus();
+  }, [active]);
+
+  useEffect(() => {
+    if (lightbox) lightboxCloseRef.current?.focus();
+  }, [lightbox]);
 
   return (
     <main>
@@ -148,7 +171,7 @@ export default function PortfolioPage() {
               >
                 <article className="project-card">
                   <div className="project-thumb">
-                    <ThumbMedia project={p} />
+                    <ThumbMedia project={p} emptyNote={emptyNote} />
                     <div className="project-thumb-overlay">
                       <button
                         className="btn btn-primary btn-sm open-modal"
@@ -248,6 +271,7 @@ export default function PortfolioPage() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
+        aria-hidden={!active}
         onClick={(e) => {
           if (e.target === e.currentTarget) setActive(null);
         }}
@@ -256,6 +280,7 @@ export default function PortfolioPage() {
           {active && (
             <div className="modal-wrapper">
               <button
+                ref={modalCloseRef}
                 className="modal-close"
                 aria-label="Tutup modal"
                 onClick={() => setActive(null)}
