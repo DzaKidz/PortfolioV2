@@ -299,13 +299,16 @@ export default function PortfolioPage() {
                   <ThumbMedia
                     project={active}
                     zoomable
+                    emptyNote={emptyNote}
                     onZoom={() =>
+                      active.thumb !== null &&
                       !isVideoThumb(active.thumb) &&
                       openLightbox(active)
                     }
                   />
                 )}
-                {!isVideoThumb(active.thumb) &&
+                {active.thumb !== null &&
+                  !isVideoThumb(active.thumb) &&
                   !(active.gallery && active.gallery.length >= 2) && (
                     <button
                       type="button"
@@ -332,7 +335,7 @@ export default function PortfolioPage() {
                     {isEn ? active.categoryLabelEn : active.categoryLabel}
                   </span>
                   <span className="badge badge-muted">{active.year}</span>
-                  <span className="badge badge-muted">📌 {active.role}</span>
+                  <span className="badge badge-muted">{active.role}</span>
                 </div>
                 <h2 className="modal-title" id="modal-title">
                   {active.title}
@@ -408,6 +411,7 @@ export default function PortfolioPage() {
         role="dialog"
         aria-modal="true"
         aria-label="Tampilan penuh karya"
+        aria-hidden={!lightbox}
         onClick={(e) => {
           if (e.target === e.currentTarget) setLightbox(null);
         }}
@@ -424,6 +428,7 @@ export default function PortfolioPage() {
             return (
               <figure id="lightbox-figure" className="lightbox-figure">
                 <button
+                  ref={lightboxCloseRef}
                   className="lightbox-close"
                   onClick={() => setLightbox(null)}
                   aria-label="Tutup tampilan penuh"
@@ -431,7 +436,7 @@ export default function PortfolioPage() {
                   ✕
                 </button>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img id="lightbox-img" src={src} alt={`${lightbox.title} — slide ${lightboxSlideIndex + 1}`} />
+                <img id="lightbox-img" src={src} alt={`${lightbox.title}, gambar ${lightboxSlideIndex + 1}`} />
                 <figcaption id="lightbox-caption" className="lightbox-caption">
                   {lightbox.title}
                   {gallery.length >= 2 && (
